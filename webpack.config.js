@@ -24,5 +24,8 @@ module.exports = {
   module: {
     loaders: loaders
   },
-  plugins: plugins
+  plugins: plugins,
+  node: {
+    fs: 'empty'
+  }
 }
