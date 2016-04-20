@@ -1,23 +1,43 @@
-import {Component, OnInit} from 'angular2/core'
+import {Component, Inject, OnInit, OnDestroy} from 'angular2/core'
+import {Observable} from 'rxjs/Rx'
 
 import ToyComponent from '../components/toy.component'
+import ToyActions from '../actions/toy.actions'
 import ToyService from '../services/toy.service'
 
 @Component({
   selector: 'toy-container',
   templateUrl: './js/containers/toy.container.html',
   directives: [ToyComponent],
-  providers: [ToyService]
+  providers: [ToyActions, ToyService]
 })
-export default class ToyContainer implements OnInit {
+export default class ToyContainer implements OnInit, OnDestroy {
 
   public toys
+  private unsub
 
-  constructor(public toyService: ToyService) {}
+  constructor(
+    @Inject('ngRedux') private ngRedux,
+    private toyActions: ToyActions
+  ) {
+    this.unsub = ngRedux.connect(this.mapStateToThis)(this)
+  }
 
   ngOnInit() {
-    this.toyService.getToys().subscribe(res => {
-      this.toys = res
-    })
+    this.ngRedux.dispatch(this.toyActions.getToys())
+  }
+
+  ngOnDestroy() {
+    this.unsub()
+  }
+
+  private mapStateToThis(state) {
+    return {
+      toys: state.toyReducer
+    };
+  }
+
+  select(obj) {
+    this.ngRedux.dispatch(this.toyActions.select(obj))
   }
 }

@@ -12,8 +12,8 @@ module.exports = [
   },
   {
     test: /\.ts$/,
-    exclude: [node_modules_dir],
-    loader: 'webpack-typescript?target=ES5'
+    loader: 'awesome-typescript-loader',
+    exclude: [/\.(spec|e2e)\.ts$/]
   },
   {
     test: /\.(woff|woff2|ttf|eot|svg|gif|jpg|jpeg|png|ico)(\?]?.*)?$/,

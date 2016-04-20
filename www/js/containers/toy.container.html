@@ -1,9 +1,10 @@
 <main class="toy-page">
 
   <toy-component
-    class="toy"
     *ngFor="#toy of toys"
-    [toy]="toy">
+    [toy]="toy"
+    (click)="select(toy)"
+  >
   </toy-component>
 
 </main>

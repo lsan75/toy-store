@@ -1,6 +1,7 @@
 var path = require('path')
 var loaders = require('./webpack.loaders')
 var plugins = require('./webpack.plugins')
+const helpers = require('./helpers')
 
 var webpack = require('webpack')
 plugins.push(
@@ -17,7 +18,8 @@ module.exports = {
     filename: 'bundle.js'
   },
   resolve: {
-    extensions: ['', '.js', '.ts', '.tsx']
+    extensions: ['', '.js', '.ts'],
+    root: helpers.root('www')
   },
   devtool: 'source-map',
   module: {
