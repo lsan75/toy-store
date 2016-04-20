@@ -1,4 +1,4 @@
-/// <reference path="./typings/tsd.d.ts" />
+/// <reference path="./typings/browser.d.ts" />
 
 /*
  * styles
@@ -9,15 +9,20 @@ import './www/less/style.less'
 /**
  *  Javascript libraries
  */
-//import './node_modules/es6-shim/es6-shim.min.js'
-//import './node_modules/es6-promise/dist/es6-promise.js'
-import './node_modules/systemjs/dist/system-polyfills.js'
-import './node_modules/angular2/bundles/angular2-polyfills.js'
-import './node_modules/systemjs/dist/system.src.js'
-import './node_modules/rxjs/Rx.js'
-import './node_modules/angular2/bundles/angular2.dev.js'
-import './node_modules/angular2/bundles/router.dev.js'
-import './node_modules/angular2/bundles/http.dev.js'
+import 'core-js/es6'
+import 'core-js/es7/reflect'
+require('zone.js/dist/zone')
+
+import 'angular2/platform/browser'
+import 'angular2/platform/common_dom'
+import 'angular2/core'
+import 'angular2/common'
+import 'angular2/http'
+import 'angular2/router'
+
+// RxJS
+import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/mergeMap'
 
 /**
 *  Main App

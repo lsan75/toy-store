@@ -8,7 +8,6 @@ plugins.push(
     'process.env.NODE_ENV': '"dev"'
   })
 )
-
 module.exports = {
   entry: {
     app: './index'
@@ -26,6 +25,11 @@ module.exports = {
   },
   plugins: plugins,
   node: {
-    fs: 'empty'
+    global: 'window',
+    crypto: 'empty',
+    fs: 'empty',
+    module: false,
+    clearImmediate: false,
+    setImmediate: false
   }
 }

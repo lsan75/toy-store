@@ -6,21 +6,23 @@
   "author": "ls",
   "license": "ISC",
   "dependencies": {
-    "angular2": "2.0.0-beta.13",
-    "es6-promise": "^3.1.2",
-    "es6-shim": "^0.35.0",
+    "angular2": "2.0.0-beta.15",
     "mdi": "^1.5.54",
-    "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.4",
-    "zone.js": "0.6.6"
+    "core-js": "^2.2.2",
+    "rxjs": "5.0.0-beta.2",
+    "zone.js": "~0.6.11"
   },
   "devDependencies": {
     "css-loader": "^0.23.1",
+    "es6-promise": "^3.1.2",
+    "es6-promise-loader": "^1.0.1",
+    "es6-shim": "^0.35.0",
+    "es7-reflect-metadata": "^1.6.0",
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.15.0",
     "istanbul": "^0.4.2",
     "istanbul-instrumenter-loader": "^0.2.0",
-    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.4.1",
     "karma": "^0.13.21",
     "karma-chrome-launcher": "^0.2.2",
     "karma-coverage": "^0.5.3",
@@ -38,14 +40,14 @@
     "style-loader": "^0.13.0",
     "systemjs": "0.19.25",
     "typescript": "^1.8.9",
-    "typings": "^0.7.11",
+    "typings": "^0.7.12",
     "webpack": "^1.12.14",
     "webpack-typescript": "^0.5.6"
   },
   "scripts": {
     "start": "npm run dev",
     "deploy": "npm run cleandist && npm run webpack",
-    "dev": "webpack-dev-server --progress --inline --content-base www/ --colors --port 9000 --watch",
+    "dev": "webpack-dev-server --progress --display-error-details --inline --content-base www/ --colors --port 9000 --watch",
     "webpack": "webpack --config webpack.production.config.js",
     "cleandist": "rimraf dist/",
     "test": "karma start"
