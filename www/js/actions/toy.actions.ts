@@ -15,11 +15,16 @@ export default class ToyActions {
 
   getToys = () => {
     return (dispatch, getState) => {
+
+      if (getState().toyReducer.length) {
+        return
+      }
+
       dispatch({
         type: TOY.REQUEST
       })
 
-      this.toyService.getToys().subscribe(res => {
+      return this.toyService.getToys().subscribe(res => {
         dispatch({
           type: TOY.RESPONSE,
           toys: res
