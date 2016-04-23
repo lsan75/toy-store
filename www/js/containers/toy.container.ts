@@ -1,15 +1,12 @@
 import {Component, Inject, OnInit, OnDestroy} from 'angular2/core'
-import {Observable} from 'rxjs/Rx'
 
 import ToyComponent from '../components/toy.component'
 import ToyActions from '../actions/toy.actions'
-import ToyService from '../services/toy.service'
 
 @Component({
   selector: 'toy-container',
   templateUrl: './js/containers/toy.container.html',
-  directives: [ToyComponent],
-  providers: [ToyActions, ToyService]
+  directives: [ToyComponent]
 })
 export default class ToyContainer implements OnInit, OnDestroy {
 
@@ -31,13 +28,14 @@ export default class ToyContainer implements OnInit, OnDestroy {
     this.unsub()
   }
 
+  onSelect(obj) {
+    this.ngRedux.dispatch(this.toyActions.select(obj))
+  }
+
   private mapStateToThis(state) {
     return {
-      toys: state.toyReducer
+      toys: state.toyReducer.toys
     };
   }
 
-  select(obj) {
-    this.ngRedux.dispatch(this.toyActions.select(obj))
-  }
 }

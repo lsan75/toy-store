@@ -22,7 +22,7 @@ export default class HeaderContainer implements OnDestroy {
 
   private mapStateToThis(state) {
     return {
-      counter: state.toyReducer.filter(item => {
+      counter: state.toyReducer.toys.filter(item => {
         return item.selected
       }).length
     };

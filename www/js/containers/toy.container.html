@@ -3,7 +3,7 @@
   <toy-component
     *ngFor="#toy of toys"
     [toy]="toy"
-    (click)="select(toy)"
+    (selectRequest)="onSelect($event)"
   >
   </toy-component>
 

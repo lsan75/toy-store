@@ -4,7 +4,8 @@ import ToyService from '../services/toy.service'
 export const TOY = {
   REQUEST: 'TOY_REQUEST',
   RESPONSE: 'TOY_RESPONSE',
-  SELECT: 'TOY_SELECT'
+  SELECT: 'TOY_SELECT',
+  COMPUTE: 'TOY_COMPUTE'
 }
 
 @Injectable()
@@ -16,7 +17,7 @@ export default class ToyActions {
   getToys = () => {
     return (dispatch, getState) => {
 
-      if (getState().toyReducer.length) {
+      if (getState().toyReducer.toys.length) {
         return
       }
 
@@ -34,9 +35,16 @@ export default class ToyActions {
   }
 
   select = toy => {
-    return {
-      type: TOY.SELECT,
-      toy
+    return (dispatch, getState) => {
+
+      dispatch({
+        type: TOY.SELECT,
+        toy
+      })
+
+      dispatch({
+        type: TOY.COMPUTE
+      })
     }
   }
 }
