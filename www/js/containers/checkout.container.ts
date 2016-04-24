@@ -1,6 +1,5 @@
 import {Component, Inject, OnInit, OnDestroy} from 'angular2/core'
 import {FORM_DIRECTIVES}    from 'angular2/common'
-
 import UserActions from '../actions/user.actions'
 
 @Component({
@@ -8,8 +7,11 @@ import UserActions from '../actions/user.actions'
   templateUrl: './js/containers/checkout.container.html',
   providers: [UserActions]
 })
+
 export default class CheckoutContainer implements OnDestroy {
+  public payed
   public user
+  public price
   private unsub
 
   constructor(
@@ -29,11 +31,13 @@ export default class CheckoutContainer implements OnDestroy {
 
   payIt() {
     this.ngRedux.dispatch(this.userActions.update(this.user))
+    this.payed = true
   }
 
   private mapStateToThis(state) {
     return {
-      user: state.userReducer
+      user: state.userReducer,
+      price: state.toyReducer.price
     }
   }
 

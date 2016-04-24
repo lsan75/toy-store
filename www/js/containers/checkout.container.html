@@ -1,5 +1,13 @@
 <main class="user">
 
+  <p *ngIf="!payed" class="message">
+    You have to pay : {{price | currency:'EUR':'1.2-2'}}
+  </p>
+
+  <p *ngIf="payed" class="message">
+    Thanks for you purchase ;)
+  </p>
+
   <form (submit)="payIt()" #userForm="ngForm" novalidate>
 
     <p>
