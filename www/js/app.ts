@@ -28,5 +28,6 @@ bootstrap(MainContainer, [
   HTTP_PROVIDERS,
   ROUTER_PROVIDERS,
   provide(LocationStrategy, {useClass: HashLocationStrategy}),
-  provider(store)
+  provider(store),
+  provide(Window, {useValue: window})
 ])

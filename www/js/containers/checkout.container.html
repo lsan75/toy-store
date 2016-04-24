@@ -1,45 +1,55 @@
 <main class="user">
 
-  <form>
+  <form (submit)="payIt()" #userForm="ngForm" novalidate>
 
     <p>
-      <label for="">Firstname</label>
-      <input type="text">
+      <label for="firstname">First Name</label>
+      <input
+        type="text"
+        [(ngModel)]="user.firstname"
+        required
+        ngControl="firstname"
+        #firstname
+      >
     </p>
 
     <p>
-      <label for="">Lasttname</label>
-      <input type="text">
+      <label for="lastname">Last Name</label>
+      <input
+        type="text"
+        [(ngModel)]="user.lastname"
+        required
+        ngControl="lastname"
+        #lastname
+      >
     </p>
 
     <p>
-      <label for="">Address</label>
-      <input type="text">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        [(ngModel)]="user.email"
+        required
+        ngControl="email"
+        #email
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+      >
     </p>
 
     <p>
-      <label for="">PostCode</label>
-      <input type="text">
+      <label for="creditcard">Credit Card Number</label>
+      <input
+        type="text"
+        [(ngModel)]="user.creditcard"
+        required
+        ngControl="creditcard"
+        #creditcard
+      >
     </p>
 
-    <p>
-      <label for="">City</label>
-      <input type="text">
-    </p>
-
-    <p>
-      <label for="">Country</label>
-      <input type="text">
-    </p>
-
-    <p>
-      <label for="">Credit Card Number</label>
-      <input type="text">
-    </p>
-
-    <p>
-      <button>Submit</button>
-    </p>
+    <footer>
+      <button [disabled]="!userForm.form.valid">Pay It Huge</button>
+    </footer>
 
   </form>
 

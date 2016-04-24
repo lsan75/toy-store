@@ -1,8 +1,9 @@
 <main class="basket">
 
-  <article *ngFor="#toy of toys" (click)="delete(toy)">
+  <article *ngFor="#toy of toys">
     <i class="mdi mdi-{{toy.icon}}"></i>
     <strong>{{toy.title}}</strong>
+    <i class="mdi mdi-close-circle" (click)="delete(toy)"></i>
     <span>{{toy.price | currency:'EUR':true:'1.2-2' }}</span>
   </article>
 
@@ -12,7 +13,7 @@
   </aside>
 
   <footer>
-    <button (click)="checkout()">Checkout</button>
+    <button (click)="checkout()" [disabled]="!price">Go Buy It</button>
   </footer>
 
 </main>

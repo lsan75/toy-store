@@ -1,0 +1,52 @@
+.basket {
+  margin: 2.6em 1em 0;
+  .clearfix();
+  article {
+    border: 1px solid @white;
+    font-size: 1.5em;
+    margin: 0 0 2em;
+    padding: 1em 2em;
+    .mdi:first-of-type {
+      font-size: 1.5em;
+      vertical-align: middle;
+    }
+    .mdi-close-circle {
+      cursor: pointer;
+      font-size: 1.4em;
+
+      transition: color ease-out 300ms;
+      -webkit-transition: color ease-out 300ms;
+      &:hover {
+        color: @red;
+      }
+      float: right;
+      margin: 0 0 0 2em;
+    }
+    strong {
+      margin-left: 1em;
+      text-transform: capitalize;
+      vertical-align: middle;
+    }
+    span {
+      float: right;
+    }
+  }
+
+  aside {
+    padding: 0 0 2em;
+    text-align: right;
+    strong {
+      font-size: 1.5em;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    span {
+      color: @yellow;
+      font-size: 1.5em;
+    }
+  }
+  footer {
+    text-align: right;
+    width: 100%;
+  }
+}

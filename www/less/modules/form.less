@@ -1,0 +1,70 @@
+button {
+  background: none;
+  border: 1px solid @white;
+  color: @white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.5em;
+  letter-spacing: 0.2em;
+  padding: 0.3em 2em;
+  text-transform: uppercase;
+
+  transition: all ease-in-out 300ms;
+  -webkit-transition: all ease-in-out 300ms;
+
+  &:hover {
+    border: 1px solid @yellow;
+    color: @yellow;
+  }
+
+  &:disabled {
+    border-color: @white;
+    color: @white;
+    opacity: 0.3;
+  }
+}
+
+p {
+  margin: 0 0 2em;
+  label {
+    display: block;
+    font-size: 1.2em;
+    padding: 0 0 0.3em;
+  }
+  input {
+    border: 1px solid @white;
+    display: block;
+    font-size: 1.4em;
+    padding: 0.5em 2em;
+    width: 100%;
+
+    transition: all ease-in-out 300ms;
+    -webkit-transition: all ease-in-out 300ms;
+
+    &.ng-invalid.ng-touched {
+      border-color: @red;
+      border-style: solid;
+      border-width: 1px 1px 1px 5px;
+    }
+    &.ng-valid.ng-touched.ng-dirty {
+      border-color: @yellow;
+      border-style: solid;
+      border-width: 1px 1px 1px 5px;
+    }
+  }
+}
+
+.user {
+  padding: 3em;
+  margin: 0 auto;
+  width: 50%;
+  footer {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .user {
+    width: 100%;
+  }
+}
