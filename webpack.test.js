@@ -15,5 +15,13 @@ module.exports = {
         loader: 'istanbul-instrumenter'
       }
     ]
+  },
+  node: {
+    global: 'window',
+    crypto: 'empty',
+    fs: 'empty',
+    module: false,
+    clearImmediate: false,
+    setImmediate: false
   }
 }

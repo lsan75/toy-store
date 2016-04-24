@@ -5,7 +5,7 @@ import ToyActions from '../actions/toy.actions'
 
 @Component({
   selector: 'toy-container',
-  templateUrl: './js/containers/toy.container.html',
+  template: require('./toy.container.html'),
   directives: [ToyComponent]
 })
 export default class ToyContainer implements OnInit, OnDestroy {

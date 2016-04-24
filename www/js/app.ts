@@ -10,8 +10,6 @@ const provider = require('ng2-redux').provider
 import thunk from 'redux-thunk'
 import * as createLogger from 'redux-logger'
 
-import 'rxjs/Rx'
-
 // import the main reducer
 import rootReducer from './reducers/index'
 

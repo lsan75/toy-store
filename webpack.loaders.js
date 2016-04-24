@@ -1,5 +1,4 @@
-var path = require('path')
-var node_modules_dir = path.resolve(__dirname, 'node_modules')
+var helpers = require('./helpers')
 
 module.exports = [
   {
@@ -18,5 +17,10 @@ module.exports = [
   {
     test: /\.(woff|woff2|ttf|eot|svg|gif|jpg|jpeg|png|ico)(\?]?.*)?$/,
     loader: 'file-loader?name=res/[name].[ext]?[hash]'
+  },
+  {
+    test: /\.html$/,
+    loader: 'raw-loader',
+    exclude: [helpers.root('www/index.html')]
   }
 ]

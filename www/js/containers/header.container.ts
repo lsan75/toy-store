@@ -3,7 +3,7 @@ import {ROUTER_DIRECTIVES} from 'angular2/router'
 
 @Component({
   selector: 'header-container',
-  templateUrl: './js/containers/header.container.html',
+  template: require('./header.container.html'),
   directives: [ROUTER_DIRECTIVES]
 })
 export default class HeaderContainer implements OnDestroy {

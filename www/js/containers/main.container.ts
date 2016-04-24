@@ -12,7 +12,7 @@ import ToyService from '../services/toy.service'
 @Component({
   selector: 'main-container',
   directives: [HeaderContainer, ROUTER_DIRECTIVES],
-  templateUrl: './js/containers/main.container.html',
+  template: require('./main.container.html'),
   providers: [ToyActions, ToyService]
 })
 

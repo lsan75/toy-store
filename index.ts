@@ -21,14 +21,13 @@ import 'angular2/http'
 import 'angular2/router'
 
 // Redux
-import './node_modules/redux/dist/redux.js'
-import './node_modules/ng2-redux/lib/index.js'
-import './node_modules/redux-thunk/dist/redux-thunk.js'
-import './node_modules/redux-logger/src/index.js'
+import 'redux/dist/redux'
+import 'ng2-redux/lib/index'
+import 'redux-thunk/dist/redux-thunk'
+import 'redux-logger/src/index'
 
 // RxJS
-import 'rxjs/add/operator/map'
-import 'rxjs/add/operator/mergeMap'
+import 'rxjs/Rx'
 
 /**
 *  Main App
