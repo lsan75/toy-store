@@ -24,7 +24,7 @@ import 'angular2/router'
 import 'redux/dist/redux'
 import 'ng2-redux/lib/index'
 import 'redux-thunk/dist/redux-thunk'
-import 'redux-logger/src/index'
+import 'redux-logger/dist/index'
 
 // RxJS
 import 'rxjs/Rx'
