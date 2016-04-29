@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core'
+import {Component, Inject, OnInit} from 'angular2/core'
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router'
 
 import BasketContainer from './basket.container'
@@ -8,12 +8,14 @@ import ToyContainer from './toy.container'
 
 import ToyActions from '../actions/toy.actions'
 import ToyService from '../services/toy.service'
+import TranslateActions from '../actions/translate.actions'
+import I18nService from '../services/i18n.service'
 
 @Component({
   selector: 'main-container',
   directives: [HeaderContainer, ROUTER_DIRECTIVES],
   template: require('./main.container.html'),
-  providers: [ToyActions, ToyService]
+  providers: [ToyActions, TranslateActions, ToyService, I18nService]
 })
 
 @RouteConfig([
@@ -35,4 +37,13 @@ import ToyService from '../services/toy.service'
   }
 ])
 
-export default class MainContainer {}
+export default class MainContainer implements OnInit {
+  constructor(
+    @Inject('ngRedux') private ngRedux,
+    private translateActions: TranslateActions
+  ) {}
+
+  ngOnInit() {
+    this.ngRedux.dispatch(this.translateActions.setLang('en'))
+  }
+}

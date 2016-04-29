@@ -12,7 +12,7 @@ module.exports = [
   {
     test: /\.ts$/,
     loader: 'awesome-typescript-loader',
-    exclude: [/\.(spec|e2e)\.ts$/]
+    exclude: [/\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/]
   },
   {
     test: /\.(woff|woff2|ttf|eot|svg|gif|jpg|jpeg|png|ico)(\?]?.*)?$/,

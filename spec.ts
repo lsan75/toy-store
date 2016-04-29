@@ -1,18 +1,6 @@
 /// <reference path="./typings/browser.d.ts" />
 
 /**
- * Jasmine styles
- */
-// import './node_modules/jasmine-core/lib/jasmine-core/jasmine.css'
-
-/**
- *  Import Javascript libraries
- */
-import './node_modules/jasmine-core/lib/jasmine-core/jasmine.js'
-import './node_modules/jasmine-core/lib/jasmine-core/jasmine-html.js'
-import './node_modules/jasmine-core/lib/jasmine-core/boot.js'
-
-/**
  *  Javascript libraries
  */
 import 'core-js/es6'
@@ -24,7 +12,6 @@ testing.setBaseTestProviders(
   browser.TEST_BROWSER_PLATFORM_PROVIDERS,
   browser.TEST_BROWSER_APPLICATION_PROVIDERS
 )
-Object.assign(global, testing)
 
 require('zone.js/dist/zone')
 require('zone.js/dist/long-stack-trace-zone')

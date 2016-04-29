@@ -4,6 +4,8 @@ import {provide} from 'angular2/core'
 import {HTTP_PROVIDERS} from 'angular2/http'
 import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router'
 
+import I18nService from './services/i18n.service'
+
 // redux imports
 import {createStore, applyMiddleware} from 'redux'
 const provider = require('ng2-redux').provider
@@ -25,6 +27,7 @@ const store = createStoreWithMiddleware(rootReducer)
 bootstrap(MainContainer, [
   HTTP_PROVIDERS,
   ROUTER_PROVIDERS,
+  I18nService,
   provide(LocationStrategy, {useClass: HashLocationStrategy}),
   provider(store),
   provide(Window, {useValue: window})
