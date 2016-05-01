@@ -8,6 +8,7 @@ import ToyActions from '../actions/toy.actions'
   template: require('./toy.container.html'),
   directives: [ToyComponent]
 })
+
 export default class ToyContainer implements OnInit, OnDestroy {
 
   public toys
@@ -35,7 +36,7 @@ export default class ToyContainer implements OnInit, OnDestroy {
   private mapStateToThis(state) {
     return {
       toys: state.toyReducer.toys
-    };
+    }
   }
 
 }
