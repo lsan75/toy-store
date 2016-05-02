@@ -1,6 +1,6 @@
 <main class="basket">
 
-  <article *ngFor="#toy of toys">
+  <article *ngFor="let toy of toys">
     <i class="mdi mdi-{{toy.icon}}"></i>
     <strong>{{toy.title}}</strong>
     <i class="mdi mdi-close-circle" (click)="delete(toy)"></i>
