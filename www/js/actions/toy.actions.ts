@@ -25,12 +25,17 @@ export default class ToyActions {
         type: TOY.REQUEST
       })
 
-      return this.toyService.getToys().subscribe(res => {
-        dispatch({
-          type: TOY.RESPONSE,
-          toys: res
-        })
-      })
+      return this.toyService.getToys().then(
+        res => {
+          dispatch({
+            type: TOY.RESPONSE,
+            toys: res
+          })
+        },
+        error => {
+          console.log(error)
+        }
+      )
     }
   }
 

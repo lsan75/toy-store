@@ -7,6 +7,8 @@ export default class ToyService {
 
   getToys = () => {
     return this.http.get('./mocks/toys.json')
-      .map((res: Response) => res.json())
+      .toPromise()
+      .then((res: Response) => res.json())
+      .catch(error => Promise.reject(error.message || 'Server error'))
   }
 }

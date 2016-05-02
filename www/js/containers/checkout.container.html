@@ -8,7 +8,7 @@
     Thanks for you purchase ;)
   </p>
 
-  <form (submit)="payIt()" #userForm="ngForm" novalidate>
+  <form (submit)="payIt()" #userForm="ngForm">
 
     <p>
       <label for="firstname">First Name</label>
@@ -17,7 +17,7 @@
         [(ngModel)]="user.firstname"
         required
         ngControl="firstname"
-        #firstname
+        #firstname="ngForm"
       >
     </p>
 
@@ -28,7 +28,7 @@
         [(ngModel)]="user.lastname"
         required
         ngControl="lastname"
-        #lastname
+        #lastname="ngForm"
       >
     </p>
 
@@ -39,7 +39,7 @@
         [(ngModel)]="user.email"
         required
         ngControl="email"
-        #email
+        #email="ngForm"
         pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
       >
     </p>
@@ -51,7 +51,7 @@
         [(ngModel)]="user.creditcard"
         required
         ngControl="creditcard"
-        #creditcard
+        #creditcard="ngForm"
       >
     </p>
 
