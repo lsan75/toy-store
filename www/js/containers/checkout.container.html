@@ -8,7 +8,7 @@
     Thanks for you purchase ;)
   </p>
 
-  <form (submit)="payIt()" #userForm="ngForm">
+  <form (submit)="payIt()" #userForm="ngForm" *ngIf="!payed">
 
     <p>
       <label for="firstname">First Name</label>
