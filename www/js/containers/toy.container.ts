@@ -1,4 +1,5 @@
-import {Component, Inject, OnInit, OnDestroy} from 'angular2/core'
+import {Component, Inject, OnInit, OnDestroy} from '@angular/core'
+import { NgRedux } from 'ng2-redux'
 
 import ToyComponent from '../components/toy.component'
 import ToyActions from '../actions/toy.actions'
@@ -15,7 +16,7 @@ export default class ToyContainer implements OnInit, OnDestroy {
   private unsub
 
   constructor(
-    @Inject('ngRedux') private ngRedux,
+    private ngRedux: NgRedux<any>,
     private toyActions: ToyActions
   ) {
     this.unsub = ngRedux.connect(this.mapStateToThis)(this)

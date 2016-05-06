@@ -1,15 +1,15 @@
 // imports libs
-import {bootstrap} from 'angular2/platform/browser'
-import {provide} from 'angular2/core'
-import {HTTP_PROVIDERS} from 'angular2/http'
-import {ROUTER_PROVIDERS} from 'angular2/router'
-import {LocationStrategy, HashLocationStrategy} from 'angular2/platform/common'
+import {bootstrap} from '@angular/platform-browser-dynamic/index'
+import {provide} from '@angular/core'
+import {HTTP_PROVIDERS} from '@angular/http'
+import {ROUTER_PROVIDERS} from '@angular/router-deprecated'
+import {LocationStrategy, HashLocationStrategy} from '@angular/common/index'
 
 import I18nService from './services/i18n.service'
 
 // redux imports
 import {createStore, applyMiddleware} from 'redux'
-const provider = require('ng2-redux').provider
+import { provider } from 'ng2-redux'
 import thunk from 'redux-thunk'
 import * as createLogger from 'redux-logger'
 

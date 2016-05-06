@@ -12,7 +12,6 @@ module.exports = {
       {
         test: /^((?!\.spec\.ts).)*.ts$/,
         exclude: /(node_modules)/,
-        include: path.resolve('www'),
         loader: 'istanbul-instrumenter'
       }
     ]

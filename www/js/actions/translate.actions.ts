@@ -1,4 +1,4 @@
-import {Injectable} from 'angular2/core'
+import {Injectable} from '@angular/core'
 import I18nService from '../services/i18n.service'
 
 export const TRANSLATE = {

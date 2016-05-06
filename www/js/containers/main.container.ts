@@ -1,5 +1,6 @@
-import {Component, Inject, OnInit} from 'angular2/core'
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router'
+import {Component, Inject, OnInit} from '@angular/core'
+import {RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated'
+import { NgRedux } from 'ng2-redux'
 
 import BasketContainer from './basket.container'
 import CheckoutContainer from './checkout.container'
@@ -39,7 +40,7 @@ import I18nService from '../services/i18n.service'
 
 export default class MainContainer implements OnInit {
   constructor(
-    @Inject('ngRedux') private ngRedux,
+    private ngRedux: NgRedux<any>,
     private translateActions: TranslateActions
   ) {}
 

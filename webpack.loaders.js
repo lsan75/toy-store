@@ -1,5 +1,3 @@
-var helpers = require('./helpers')
-
 module.exports = [
   {
     test: /\.css$/,
@@ -12,7 +10,12 @@ module.exports = [
   {
     test: /\.ts$/,
     loader: 'awesome-typescript-loader',
-    exclude: [/\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/]
+    //exclude: [/\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/],
+    query: {
+      compilerOptions: {
+        removeComments: true
+      }
+    }
   },
   {
     test: /\.(woff|woff2|ttf|eot|svg|gif|jpg|jpeg|png|ico)(\?]?.*)?$/,
@@ -20,7 +23,6 @@ module.exports = [
   },
   {
     test: /\.html$/,
-    loader: 'raw-loader',
-    exclude: [helpers.root('www/index.html')]
+    loader: 'raw-loader'
   }
 ]

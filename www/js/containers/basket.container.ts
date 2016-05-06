@@ -1,5 +1,7 @@
-import {Component, Inject, OnDestroy} from 'angular2/core'
-import {Router} from 'angular2/router'
+import {Component, Inject, OnDestroy} from '@angular/core'
+import {Router} from '@angular/router-deprecated'
+import { NgRedux } from 'ng2-redux'
+
 import ToyActions from '../actions/toy.actions'
 
 @Component({
@@ -12,7 +14,7 @@ export default class BasketContainer implements OnDestroy {
   private unsub
 
   constructor(
-    @Inject('ngRedux') private ngRedux,
+    private ngRedux: NgRedux<any>,
     private toyActions: ToyActions,
     private router: Router
   ) {

@@ -1,5 +1,6 @@
-import {Component, Inject, OnInit, OnDestroy} from 'angular2/core'
-import {ROUTER_DIRECTIVES} from 'angular2/router'
+import { Component, Inject, OnInit, OnDestroy } from '@angular/core'
+import { ROUTER_DIRECTIVES } from '@angular/router-deprecated'
+import { NgRedux } from 'ng2-redux'
 
 @Component({
   selector: 'header-container',
@@ -12,7 +13,7 @@ export default class HeaderContainer implements OnInit, OnDestroy {
   private unsub
 
   constructor(
-    @Inject('ngRedux') private ngRedux
+    private ngRedux: NgRedux
   ) {}
 
   ngOnInit() {

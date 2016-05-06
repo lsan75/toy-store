@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy, EventEmitter} from 'angular2/core'
+import {Component, ChangeDetectionStrategy, EventEmitter} from '@angular/core'
 
 @Component({
   selector: 'toy-component',

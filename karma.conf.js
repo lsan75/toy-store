@@ -13,9 +13,12 @@ module.exports = function (config) {
     frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
+    // //'spec.ts',
     files: [
-      'spec.ts',
-      'www/**/*.spec.ts'
+      { pattern: 'node_modules/zone.js/dist/zone.js', included: false, watched: false },
+      { pattern: 'node_modules/zone.js/dist/async-test.js', included: false, watched: false },
+      { pattern: 'spec.ts', included: true, served: true },
+      { pattern: 'www/**/*.spec.ts', included: true }
     ],
 
     // list of files to exclude
@@ -27,7 +30,7 @@ module.exports = function (config) {
     preprocessors: {
       'spec.ts': ['webpack'],
       'www/js/**/*.spec.ts': ['webpack'],
-      'www/js/**/!(*.spec)+(.ts)': ['coverage']
+      'www/js/**/!(*.spec)+(.ts)': ['coverage', 'webpack']
     },
 
     webpackMiddleware: {
@@ -84,11 +87,11 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true,
+    singleRun: false,
 
     // Concurrency level
     // how many browser should be started simultaneous

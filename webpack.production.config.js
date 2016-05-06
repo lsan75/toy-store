@@ -2,6 +2,7 @@ var path = require('path')
 var loaders = require('./webpack.loaders')
 var plugins = require('./webpack.plugins')
 var webpack = require('webpack')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 plugins.push(
   new webpack.DefinePlugin({
@@ -19,6 +20,11 @@ plugins.push(
       warnings: false
     }
   })
+)
+plugins.push(
+  new CopyWebpackPlugin([
+    { from: './www/mocks', to: 'mocks' }
+  ])
 )
 module.exports = {
   entry: './index',

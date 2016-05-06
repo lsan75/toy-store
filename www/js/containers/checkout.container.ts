@@ -1,5 +1,6 @@
-import {Component, Inject, OnInit, OnDestroy} from 'angular2/core'
-import {FORM_DIRECTIVES}    from 'angular2/common'
+import {Component, Inject, OnInit, OnDestroy} from '@angular/core'
+import { NgRedux } from 'ng2-redux'
+
 import UserActions from '../actions/user.actions'
 
 @Component({
@@ -8,14 +9,14 @@ import UserActions from '../actions/user.actions'
   providers: [UserActions]
 })
 
-export default class CheckoutContainer implements OnDestroy {
+export default class CheckoutContainer implements OnDestroy, OnInit {
   public payed
   public user
   public price
   private unsub
 
   constructor(
-    @Inject('ngRedux') private ngRedux,
+    private ngRedux: NgRedux<any>,
     private userActions: UserActions
   ) {
     this.unsub = ngRedux.connect(this.mapStateToThis)(this)

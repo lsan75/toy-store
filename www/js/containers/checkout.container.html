@@ -50,8 +50,12 @@
         type="text"
         [(ngModel)]="user.creditcard"
         required
+        pattern="[0-9]+"
+        minlength="16"
+        maxlength="16"
         ngControl="creditcard"
         #creditcard="ngForm"
+        [readonly]="!email.valid"
       >
     </p>
 

@@ -3,30 +3,35 @@
 /**
  *  Javascript libraries
  */
+require('zone.js/dist/zone');
+require('zone.js/dist/long-stack-trace-zone');
+require('zone.js/dist/jasmine-patch');
+require('zone.js/dist/async-test');
+import 'reflect-metadata'
+
 import 'core-js/es6'
 import 'core-js/es7/reflect'
 
-var testing = require('angular2/testing')
-var browser = require('angular2/platform/testing/browser')
-testing.setBaseTestProviders(
-  browser.TEST_BROWSER_PLATFORM_PROVIDERS,
-  browser.TEST_BROWSER_APPLICATION_PROVIDERS
-)
+import '@angular/common'
+import '@angular/compiler'
+import '@angular/core'
+import '@angular/http'
+import '@angular/platform-browser'
+import '@angular/platform-browser-dynamic'
+//import '@angular/router'
+import '@angular/router-deprecated'
 
-require('zone.js/dist/zone')
-require('zone.js/dist/long-stack-trace-zone')
-require('zone.js/dist/jasmine-patch')
 
-import 'angular2/platform/browser'
-import 'angular2/platform/common_dom'
-import 'angular2/core'
-import 'angular2/common'
-import 'angular2/http'
-import 'angular2/router'
+import { setBaseTestProviders } from '@angular/core/testing'
+import {
+  TEST_BROWSER_DYNAMIC_PLATFORM_PROVIDERS,
+  TEST_BROWSER_DYNAMIC_APPLICATION_PROVIDERS
+} from '@angular/platform-browser-dynamic/testing'
+
+setBaseTestProviders(TEST_BROWSER_DYNAMIC_PLATFORM_PROVIDERS, TEST_BROWSER_DYNAMIC_APPLICATION_PROVIDERS)
 
 // Redux
 import 'redux/dist/redux'
-import 'ng2-redux/lib/index'
 import 'redux-thunk/dist/redux-thunk'
 import 'redux-logger/src/index'
 
@@ -36,4 +41,4 @@ import 'rxjs/Rx'
 /**
  *  Main App
  */
-import './www/js/app'
+//import './www/js/app'
