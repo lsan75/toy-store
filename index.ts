@@ -33,4 +33,4 @@ import 'rxjs/Rx'
 /**
 *  Main App
 */
-import './www/js/app'
+import './www/js/main'

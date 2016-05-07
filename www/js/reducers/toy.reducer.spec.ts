@@ -37,6 +37,18 @@ describe('toyReducer', () => {
   })
 
   it('Shoud compute', () => {
-
+    const result = toyReducer(
+    {
+      toys: [
+        { price: 10, selected: true },
+        { price: 20 },
+        { price: 30, selected: true }
+      ]
+    },
+    {
+      type: TOY.COMPUTE
+    })
+    expect(result.toys.length).toBe(3)
+    expect(result.price).toBe(40)
   })
 })

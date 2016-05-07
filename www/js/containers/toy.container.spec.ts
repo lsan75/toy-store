@@ -1,18 +1,13 @@
 import { beforeEachProviders, beforeEach, inject, async } from '@angular/core/testing'
 import { TestComponentBuilder } from '@angular/compiler/testing'
-import { HTTP_PROVIDERS } from '@angular/http'
+import { provide } from '@angular/core'
 
 import ToyContainer from './toy.container'
 import ToyActions from '../actions/toy.actions'
-import ToyService from '../services/toy.service'
 
 // build redux
-import { provider, NgRedux } from 'ng2-redux'
-import {createStore, applyMiddleware} from 'redux'
-import thunk from 'redux-thunk'
-import rootReducer from '../reducers/index'
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
-const store = createStoreWithMiddleware(rootReducer)
+import { NgRedux } from 'ng2-redux'
+import store from '../helpers/redux.helper'
 
 describe('ToyContainer', () => {
 
@@ -21,13 +16,17 @@ describe('ToyContainer', () => {
   let actions
   let toy
 
+  class MockToyActions {
+    getToys = () => {
+      return (dispatch, getState) => {}
+    }
+  }
+
   beforeEachProviders(() => [
     TestComponentBuilder,
-    HTTP_PROVIDERS,
     ToyContainer,
-    ToyActions,
-    ToyService,
-    provider(store)
+    provide(ToyActions, {useClass: MockToyActions}),
+    store()
   ])
 
   beforeEach(async(inject([TestComponentBuilder, NgRedux, ToyContainer, ToyActions], (_t, _r, _c, _a) => {
@@ -44,9 +43,11 @@ describe('ToyContainer', () => {
       const instance = fixture.componentInstance
       const element = fixture.nativeElement
 
+      fixture.detectChanges()
       expect(instance).toBeDefined()
 
       done()
+
     }).catch(e => done.fail(e))
 
   })

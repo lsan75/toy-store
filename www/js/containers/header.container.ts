@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, OnDestroy } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 import { ROUTER_DIRECTIVES } from '@angular/router-deprecated'
 import { NgRedux } from 'ng2-redux'
 

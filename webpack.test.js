@@ -1,5 +1,6 @@
 var loaders = require('./webpack.loaders')
-var path = require('path')
+var webpack = require('webpack')
+
 module.exports = {
   resolve: {
     extensions: ['', '.js', '.ts']
@@ -16,6 +17,11 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"test"'
+    })
+  ],
   node: {
     global: 'window',
     crypto: 'empty',

@@ -1,5 +1,5 @@
-import {beforeEachProviders, beforeEach, afterEach, inject} from '@angular/core/testing'
-import {Component, provide} from '@angular/core'
+import { beforeEachProviders, beforeEach, afterEach, inject } from '@angular/core/testing'
+import { provide } from '@angular/core'
 
 import UserActions, {USER} from '../actions/user.actions'
 

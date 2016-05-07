@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, OnDestroy } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 import { NgRedux } from 'ng2-redux'
 
 import ToyComponent from '../components/toy.component'

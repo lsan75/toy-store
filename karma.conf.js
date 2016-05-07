@@ -13,16 +13,12 @@ module.exports = function (config) {
     frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
-    // //'spec.ts',
     files: [
-      { pattern: 'node_modules/zone.js/dist/zone.js', included: false, watched: false },
-      { pattern: 'node_modules/zone.js/dist/async-test.js', included: false, watched: false },
       { pattern: 'spec.ts', included: true, watched: false }
     ],
 
     // list of files to exclude
-    exclude: [
-    ],
+    exclude: [],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
@@ -47,7 +43,6 @@ module.exports = function (config) {
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: [
-      'dots',
       'spec',
       'coverage'
     ],
