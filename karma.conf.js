@@ -17,8 +17,7 @@ module.exports = function (config) {
     files: [
       { pattern: 'node_modules/zone.js/dist/zone.js', included: false, watched: false },
       { pattern: 'node_modules/zone.js/dist/async-test.js', included: false, watched: false },
-      { pattern: 'spec.ts', included: true, served: true },
-      { pattern: 'www/**/*.spec.ts', included: true }
+      { pattern: 'spec.ts', included: true, watched: false }
     ],
 
     // list of files to exclude

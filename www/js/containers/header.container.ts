@@ -13,7 +13,7 @@ export default class HeaderContainer implements OnInit, OnDestroy {
   private unsub
 
   constructor(
-    private ngRedux: NgRedux
+    private ngRedux: NgRedux<any>
   ) {}
 
   ngOnInit() {

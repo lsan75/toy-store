@@ -1,9 +1,9 @@
 // imports libs
-import {bootstrap} from '@angular/platform-browser-dynamic/index'
-import {provide} from '@angular/core'
-import {HTTP_PROVIDERS} from '@angular/http'
-import {ROUTER_PROVIDERS} from '@angular/router-deprecated'
-import {LocationStrategy, HashLocationStrategy} from '@angular/common/index'
+import { bootstrap } from '@angular/platform-browser-dynamic/index'
+import { provide } from '@angular/core'
+import { HTTP_PROVIDERS } from '@angular/http'
+import { ROUTER_PROVIDERS } from '@angular/router-deprecated'
+import { LocationStrategy, HashLocationStrategy } from '@angular/common/index'
 
 import I18nService from './services/i18n.service'
 

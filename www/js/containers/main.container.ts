@@ -1,5 +1,5 @@
-import {Component, Inject, OnInit} from '@angular/core'
-import {RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated'
+import { Component, Inject, OnInit } from '@angular/core'
+import { RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated'
 import { NgRedux } from 'ng2-redux'
 
 import BasketContainer from './basket.container'

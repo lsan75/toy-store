@@ -1,14 +1,11 @@
 <header>
-
   <h1>
-    <a [routerLink]="['Toys']">{{'title'|i18nSelect:translate}}</a>
+    <a [routerLink]="['Toys']">{{'title' | i18nSelect:translate}}</a>
   </h1>
-
   <aside>
     <a [routerLink]="['Basket']">
       <i class="mdi mdi-basket"></i>
       <span *ngIf="counter">{{counter}}</span>
     </a>
   </aside>
-
 </header>
