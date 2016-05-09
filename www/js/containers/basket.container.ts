@@ -2,11 +2,13 @@ import { Component, OnDestroy } from '@angular/core'
 import { Router } from '@angular/router-deprecated'
 import { NgRedux } from 'ng2-redux'
 
+import UpperPipe from '../pipes/upper.pipe'
 import ToyActions from '../actions/toy.actions'
 
 @Component({
   selector: 'basket-component',
-  template: require('./basket.container.html')
+  template: require('./basket.container.html'),
+  pipes: [UpperPipe]
 })
 export default class BasketContainer implements OnDestroy {
   public toys

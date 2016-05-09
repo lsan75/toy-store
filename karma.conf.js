@@ -37,6 +37,8 @@ module.exports = function (config) {
       }
     },
 
+    webpackServer: { noInfo: true },
+
     webpack: webpackConfig,
 
     // test results reporter to use
@@ -89,6 +91,6 @@ module.exports = function (config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
+    concurrency: 1
   })
 }
