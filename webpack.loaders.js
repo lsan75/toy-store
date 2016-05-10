@@ -10,7 +10,6 @@ module.exports = [
   {
     test: /\.ts$/,
     loader: 'awesome-typescript-loader',
-    //exclude: [/\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/],
     query: {
       compilerOptions: {
         removeComments: true

@@ -7,14 +7,15 @@
         "sourceMap": true
     },
     "exclude": [
-        "node_modules",
-        "typings/main.d.ts",
-        "typings/main",
+        "./node_modules",
+        "./typings/main.d.ts",
+        "./typings/main",
         "./www"
     ],
     "filesGlob": [
         "./www/**/*.ts",
-        "./test/**/*.ts",
+        "./index.ts",
+        "./spec.ts",
         "!./node_modules/**/*.ts",
         "typings/browser.d.ts"
     ],
@@ -28,15 +29,37 @@
         "rewriteTsconfig": false
     },
     "files": [
-        "./www/js/app.ts",
+        "./www/js/actions/temp.actions.spec.ts",
+        "./www/js/actions/temp.actions.ts",
+        "./www/js/actions/temp.service.ts",
+        "./www/js/actions/toy.actions.ts",
+        "./www/js/actions/translate.actions.spec.ts",
+        "./www/js/actions/translate.actions.ts",
+        "./www/js/actions/user.actions.spec.ts",
+        "./www/js/actions/user.actions.ts",
+        "./www/js/components/toy.component.spec.ts",
         "./www/js/components/toy.component.ts",
         "./www/js/containers/basket.container.ts",
+        "./www/js/containers/checkout.container.ts",
+        "./www/js/containers/header.container.spec.ts",
         "./www/js/containers/header.container.ts",
-        "./www/js/containers/main.container.spec.ts",
         "./www/js/containers/main.container.ts",
+        "./www/js/containers/toy.container.spec.ts",
         "./www/js/containers/toy.container.ts",
-        "./www/js/reducers/root.reducer.ts",
+        "./www/js/helpers/redux.helper.ts",
+        "./www/js/main.ts",
+        "./www/js/pipes/upper.pipe.spec.ts",
+        "./www/js/pipes/upper.pipe.ts",
+        "./www/js/reducers/index.ts",
+        "./www/js/reducers/toy.reducer.spec.ts",
+        "./www/js/reducers/toy.reducer.ts",
+        "./www/js/reducers/translate.reducer.ts",
+        "./www/js/reducers/user.reducer.ts",
+        "./www/js/services/i18n.service.ts",
+        "./www/js/services/toy.service.spec.ts",
         "./www/js/services/toy.service.ts",
+        "./index.ts",
+        "./spec.ts",
         "typings/browser.d.ts"
     ]
 }

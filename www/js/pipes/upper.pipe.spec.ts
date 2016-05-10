@@ -1,4 +1,4 @@
-import { beforeEachProviders, describe, beforeEach, inject, it, expect } from '@angular/core/testing'
+import { beforeEachProviders, inject } from '@angular/core/testing'
 import UpperPipe from '../pipes/upper.pipe'
 
 describe('UpperPipe', () => {
@@ -10,7 +10,7 @@ describe('UpperPipe', () => {
   ])
 
   beforeEach(inject([UpperPipe], p => {
-    pipe = new UpperPipe()
+    pipe = p
   }))
 
   it('Should return an uppercase', () => {

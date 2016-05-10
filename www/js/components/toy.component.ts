@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy, EventEmitter} from '@angular/core'
+import {Component, ChangeDetectionStrategy, EventEmitter, OnInit} from '@angular/core'
 
 @Component({
   selector: 'toy-component',
@@ -7,11 +7,16 @@ import {Component, ChangeDetectionStrategy, EventEmitter} from '@angular/core'
   outputs: ['selectRequest'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export default class ToyComponent {
+export default class ToyComponent implements OnInit {
   public selectRequest
+  public toto
 
   constructor() {
     this.selectRequest = new EventEmitter()
+  }
+
+  ngOnInit() {
+    this.toto = 'init'
   }
 
   select(toy) {

@@ -19,9 +19,12 @@ describe('ToyComponent', () => {
 
   it('Should be defined', () => {
     expect(toy).toBeDefined()
+    toy.ngOnInit()
+    expect(toy.toto).toBe('init')
   })
 
   it('Toy should send a request', () => {
+    toy.ngOnInit()
     toy.select('bou')
     toy.selectRequest.subscribe(res => {
       expect(res).toBe('bou')
@@ -30,7 +33,7 @@ describe('ToyComponent', () => {
 
   it('Should change state', done => {
 
-    return tcb.createAsync(ToyComponent).then(fixture => {
+    tcb.createAsync(ToyComponent).then(fixture => {
 
       const instance = fixture.componentInstance
       const element = fixture.nativeElement

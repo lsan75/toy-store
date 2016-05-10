@@ -40,6 +40,7 @@
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^0.2.2",
     "karma-coverage": "^0.5.5",
+    "karma-es6-shim": "^1.0.0",
     "karma-jasmine": "^0.3.8",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-phantomjs-shim": "^1.4.0",
