@@ -43,8 +43,14 @@ describe('ToyContainer', () => {
       const instance = fixture.componentInstance
       const element = fixture.nativeElement
 
+      spyOn(redux, 'dispatch')
+      spyOn(actions, 'getToys')
+
       fixture.detectChanges()
       expect(instance).toBeDefined()
+
+      expect(redux.dispatch).toHaveBeenCalled()
+      expect(actions.getToys).toHaveBeenCalled()
 
       done()
 
