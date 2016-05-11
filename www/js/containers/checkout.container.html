@@ -1,17 +1,17 @@
 <main class="user">
 
   <p *ngIf="!payed" class="message">
-    You have to pay : {{price | currency:'EUR':'1.2-2'}}
+    {{'paymsg' | i18nSelect:translate}} : {{price | currency:'EUR':'1.2-2'}}
   </p>
 
   <p *ngIf="payed" class="message">
-    Thanks for you purchase ;)
+    {{'bravo' | i18nSelect:translate}}
   </p>
 
   <form (submit)="payIt()" #userForm="ngForm" *ngIf="!payed">
 
     <p>
-      <label for="firstname">First Name</label>
+      <label for="firstname">{{'firstname' | i18nSelect:translate}}</label>
       <input
         type="text"
         [(ngModel)]="user.firstname"
@@ -22,7 +22,7 @@
     </p>
 
     <p>
-      <label for="lastname">Last Name</label>
+      <label for="lastname">{{'lastname' | i18nSelect:translate}}</label>
       <input
         type="text"
         [(ngModel)]="user.lastname"
@@ -45,7 +45,7 @@
     </p>
 
     <p>
-      <label for="creditcard">Credit Card Number</label>
+      <label for="creditcard">{{'cb' | i18nSelect:translate}}</label>
       <input
         type="text"
         [(ngModel)]="user.creditcard"
@@ -60,7 +60,7 @@
     </p>
 
     <footer>
-      <button [disabled]="!userForm.form.valid">Pay It Huge</button>
+      <button [disabled]="!userForm.form.valid">{{'payit' | i18nSelect:translate}}</button>
     </footer>
 
   </form>

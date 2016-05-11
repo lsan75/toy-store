@@ -23,6 +23,7 @@ header {
   .clearfix();
   aside {
     float: right;
+    margin-left: 2em;
   }
   .mdi {
     color: @white;
@@ -39,6 +40,19 @@ header {
     padding: 0 0.5em;
     position: relative;
     top: -0.3em;
+  }
+
+  .langs {
+    span {
+      background: none;
+      border: 1px solid @white;
+      cursor: pointer;
+      margin-top: 0.4em;
+      &.selected {
+        background: @blue;
+        cursor: default;
+      }
+    }
   }
 }
 

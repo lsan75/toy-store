@@ -41,7 +41,7 @@ export default class ToyActions {
     }
   }
 
-  select = toy => {
+  selectToy = toy => {
     return (dispatch, getState) => {
 
       dispatch({

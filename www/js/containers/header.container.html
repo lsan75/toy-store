@@ -2,6 +2,17 @@
   <h1>
     <a [routerLink]="['Toys']">{{'title' | i18nSelect:translate}}</a>
   </h1>
+
+  <aside class="langs">
+    <span
+      *ngFor="let lang of langs"
+      [ngClass]="{selected: lang.selected}"
+      (click)="selectLang(lang)"
+    >
+      {{lang.label}}
+    </span>
+  </aside>
+
   <aside>
     <a [routerLink]="['Basket']">
       <i class="mdi mdi-basket"></i>

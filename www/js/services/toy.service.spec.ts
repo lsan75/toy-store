@@ -1,7 +1,7 @@
 import {beforeEachProviders, beforeEach, afterEach, inject} from '@angular/core/testing'
 import {MockBackend} from '@angular/http/testing'
 import {provide} from '@angular/core'
-import {HTTP_PROVIDERS, XHRBackend, Response} from '@angular/http'
+import {HTTP_PROVIDERS, XHRBackend, Response, ResponseOptions, Headers} from '@angular/http'
 
 import ToyService from '../services/toy.service'
 
@@ -32,7 +32,11 @@ describe('Toy Service', () => {
     }]
 
     mock.connections.subscribe(connection => {
-      connection.mockRespond(new Response({body: JSON.stringify(response)}))
+      const resp = new ResponseOptions({
+        body: JSON.stringify(response),
+        status: 200
+      })
+      connection.mockRespond(new Response(resp))
     })
 
     toy.getToys().subscribe(toys => {

@@ -14,7 +14,7 @@ describe('UpperPipe', () => {
   }))
 
   it('Should return an uppercase', () => {
-    expect(pipe.transform('')).toEqual('')
-    expect(pipe.transform('hello')).toEqual('HELLO')
+    expect( pipe.transform('') ).toBe('')
+    expect( pipe.transform('hello') ).toBe('HELLO')
   })
 })

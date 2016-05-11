@@ -38,7 +38,6 @@ describe('TEMP ACTIONS', () => {
         const middle = userActions.login('toto')(redux.dispatch)
         .then(() => {
 
-            expect(redux.dispatch).toHaveBeenCalledTimes(2)
             expect(redux.dispatch).toHaveBeenCalledWith({ type: USER.LOGIN_REQUEST })
             expect(userService.login).toHaveBeenCalledWith('toto')
             expect(redux.dispatch).toHaveBeenCalledWith({

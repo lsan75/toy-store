@@ -28,7 +28,7 @@ export default class BasketContainer implements OnDestroy {
   }
 
   delete(obj) {
-    this.ngRedux.dispatch(this.toyActions.select(obj))
+    this.ngRedux.dispatch(this.toyActions.selectToy(obj))
   }
 
   checkout() {
@@ -40,7 +40,8 @@ export default class BasketContainer implements OnDestroy {
       toys: state.toyReducer.toys.filter(item => {
         return item.selected
       }),
-      price: state.toyReducer.price
+      price: state.toyReducer.price,
+      translate: state.translateReducer.translate
     };
   }
 }

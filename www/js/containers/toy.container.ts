@@ -3,11 +3,12 @@ import { NgRedux } from 'ng2-redux'
 
 import ToyComponent from '../components/toy.component'
 import ToyActions from '../actions/toy.actions'
+import FadeDirective from '../directives/fade.directive'
 
 @Component({
   selector: 'toy-container',
   template: require('./toy.container.html'),
-  directives: [ToyComponent]
+  directives: [ToyComponent, FadeDirective]
 })
 
 export default class ToyContainer implements OnInit, OnDestroy {
@@ -18,12 +19,11 @@ export default class ToyContainer implements OnInit, OnDestroy {
   constructor(
     private ngRedux: NgRedux<any>,
     private toyActions: ToyActions
-  ) {
-    this.unsub = ngRedux.connect(this.mapStateToThis)(this)
-  }
+  ) {}
 
   ngOnInit() {
-    this.ngRedux.dispatch(this.toyActions.getToys())
+    this.unsub = this.ngRedux.connect(this.mapStateToThis)(this)
+    this.ngRedux.dispatch( this.toyActions.getToys() )
   }
 
   ngOnDestroy() {
@@ -31,7 +31,7 @@ export default class ToyContainer implements OnInit, OnDestroy {
   }
 
   onSelect(obj) {
-    this.ngRedux.dispatch(this.toyActions.select(obj))
+    this.ngRedux.dispatch( this.toyActions.selectToy(obj) )
   }
 
   private mapStateToThis(state) {

@@ -1,10 +1,6 @@
-import { beforeEachProviders, inject } from '@angular/core/testing'
+import { beforeEachProviders, inject, it, async } from '@angular/core/testing'
 import { TestComponentBuilder } from '@angular/compiler/testing'
-
 import { provide } from '@angular/core'
-import { RouteRegistry, ROUTER_PRIMARY_COMPONENT, RootRouter, Router } from '@angular/router-deprecated'
-import { SpyLocation } from '@angular/common/testing'
-import { Location } from '@angular/common/index'
 
 // redux
 import { NgRedux } from 'ng2-redux'
@@ -18,43 +14,34 @@ import ToyService from '../services/toy.service'
 import I18nService from '../services/i18n.service'
 
 class Mock {}
+class MockTranslate {
+  setLang = parm => (dispatch, getState) => {}
+}
 
 describe('MainContainer', () => {
 
-  let tcb, main, redux, translate, router, location
+  let tcb, redux, translate
 
   beforeEachProviders(() => [
+    TestComponentBuilder,
     MainContainer,
-    RouteRegistry,
-    provide(Router, {useClass: RootRouter}),
-    provide(Location, {useClass: SpyLocation}),
-    provide(ROUTER_PRIMARY_COMPONENT, {useValue: MainContainer}),
-    TranslateActions,
+    provide(TranslateActions, { useClass: MockTranslate }),
     provide(HeaderContainer, { useClass: Mock }),
     provide(I18nService, { useClass: Mock }),
     provide(ToyService, { useClass: Mock }),
     provide(ToyActions, { useClass: Mock }),
-    TestComponentBuilder,
     store()
   ])
 
-  beforeEach(async(inject([TestComponentBuilder, NgRedux, TranslateActions, Router, Location], (_tcb, _redux, _translate, _router, _location) => {
+  beforeEach(async(inject([TestComponentBuilder, NgRedux, TranslateActions], (_tcb, _redux, _translate) => {
     tcb = _tcb
     redux = _redux
     translate = _translate
-    router = _router
-    location = _location
 
     spyOn(redux, 'dispatch')
+    spyOn(translate, 'setLang')
 
   })))
-
-  it('Should route to /toys', done => {
-    router.navigate(['Toys']).then(() => {
-      expect(location.path()).toBe('/toys')
-      done()
-    }).catch(e => done.fail(e))
-  })
 
   it('Should set translate', done => {
 
@@ -63,10 +50,11 @@ describe('MainContainer', () => {
       .createAsync(MainContainer).then(fixture => {
 
         fixture.detectChanges()
-
         expect(redux.dispatch).toHaveBeenCalled()
+        //expect(translate.setLang).toHaveBeenCalled()
 
         done()
+
       }).catch(e => done.fail(e))
 
   })

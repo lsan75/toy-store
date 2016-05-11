@@ -38,7 +38,8 @@ export default class CheckoutContainer implements OnDestroy, OnInit {
   private mapStateToThis(state) {
     return {
       user: state.userReducer,
-      price: state.toyReducer.price
+      price: state.toyReducer.price,
+      translate: state.translateReducer.translate
     }
   }
 

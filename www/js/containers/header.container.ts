@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core'
 import { ROUTER_DIRECTIVES } from '@angular/router-deprecated'
 import { NgRedux } from 'ng2-redux'
 
+import TranslateActions from '../actions/translate.actions'
+
 @Component({
   selector: 'header-container',
   template: require('./header.container.html'),
@@ -10,10 +12,12 @@ import { NgRedux } from 'ng2-redux'
 export default class HeaderContainer implements OnInit, OnDestroy {
   public counter
   public translate
+  public langs
   private unsub
 
   constructor(
-    private ngRedux: NgRedux<any>
+    private ngRedux: NgRedux<any>,
+    private translateActions: TranslateActions
   ) {}
 
   ngOnInit() {
@@ -24,12 +28,17 @@ export default class HeaderContainer implements OnInit, OnDestroy {
     this.unsub()
   }
 
+  public selectLang = lang => {
+    this.ngRedux.dispatch( this.translateActions.setLang(lang.label) )
+  }
+
   private mapStateToThis(state) {
     return {
       counter: state.toyReducer.toys.filter(item => {
         return item.selected
       }).length,
-      translate: state.translateReducer
+      translate: state.translateReducer.translate,
+      langs: state.translateReducer.langs
     };
   }
 

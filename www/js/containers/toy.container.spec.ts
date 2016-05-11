@@ -17,15 +17,14 @@ describe('ToyContainer', () => {
   let toy
 
   class MockToyActions {
-    getToys = () => {
-      return (dispatch, getState) => {}
-    }
+    getToys = () => (dispatch, getState) => {}
+    selectToy = () => (dispatch, getState) => {}
   }
 
   beforeEachProviders(() => [
     TestComponentBuilder,
     ToyContainer,
-    provide(ToyActions, {useClass: MockToyActions}),
+    provide(ToyActions, { useClass: MockToyActions }),
     store()
   ])
 
@@ -34,23 +33,39 @@ describe('ToyContainer', () => {
     redux = _r
     actions = _a
     toy = _c
+    spyOn(redux, 'dispatch')
+    spyOn(actions, 'getToys')
+    spyOn(actions, 'selectToy')
   })))
 
-  it('Should be instanciated', done => {
+  it('Should be initialize', done => {
 
     tcb.createAsync(ToyContainer).then(fixture => {
 
       const instance = fixture.componentInstance
       const element = fixture.nativeElement
 
-      spyOn(redux, 'dispatch')
-      spyOn(actions, 'getToys')
-
       fixture.detectChanges()
-      expect(instance).toBeDefined()
 
-      expect(redux.dispatch).toHaveBeenCalled()
-      expect(actions.getToys).toHaveBeenCalled()
+      expect( redux.dispatch ).toHaveBeenCalled()
+      expect( actions.getToys ).toHaveBeenCalled()
+
+      done()
+
+    }).catch(e => done.fail(e))
+
+  })
+
+  it('Should be selected', done => {
+
+    tcb.createAsync(ToyContainer).then(fixture => {
+
+      const instance = fixture.componentInstance
+      const element = fixture.nativeElement
+
+      instance.onSelect('toto')
+      expect( redux.dispatch ).toHaveBeenCalled()
+      expect( actions.selectToy ).toHaveBeenCalledWith('toto')
 
       done()
 

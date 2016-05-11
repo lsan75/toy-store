@@ -45,6 +45,6 @@ export default class MainContainer implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.ngRedux.dispatch(this.translateActions.setLang('en'))
+    this.ngRedux.dispatch( this.translateActions.setLang('en') )
   }
 }

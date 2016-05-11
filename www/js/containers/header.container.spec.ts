@@ -4,6 +4,7 @@ import { TestComponentBuilder } from '@angular/compiler/testing'
 
 import HeaderContainer from './header.container'
 import { TOY } from '../actions/toy.actions'
+import { TRANSLATE } from '../actions/translate.actions'
 
 // build redux
 import { NgRedux } from 'ng2-redux'
@@ -47,6 +48,14 @@ describe('HeaderContainer', () => {
 
       fixture.detectChanges()
       expect(instance.counter).toBe(2)
+
+      redux.dispatch({
+        type: TRANSLATE.SETLANG,
+        translate: 'bam'
+      })
+
+      fixture.detectChanges()
+      expect(instance.translate).toBe('bam')
 
       done()
 
