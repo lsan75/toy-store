@@ -10,6 +10,6 @@ const createStoreWithMiddleware = process.env.NODE_ENV === 'dev' ?
 
 const myStore = createStoreWithMiddleware(rootReducer)
 
-export default function store() {
+export function store() {
   return provider(myStore)
 }

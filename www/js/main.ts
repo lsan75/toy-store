@@ -6,7 +6,7 @@ import { ROUTER_PROVIDERS } from '@angular/router-deprecated'
 import { LocationStrategy, HashLocationStrategy } from '@angular/common/index'
 
 // redux imports
-import store from './helpers/redux.helper'
+import { store } from './helpers/redux.helper'
 
 // import the main container
 import MainContainer from './containers/main.container'

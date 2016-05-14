@@ -2,7 +2,7 @@
 
   <article *ngFor="let toy of toys">
     <i class="mdi mdi-{{toy.icon}}"></i>
-    <strong>{{toy.title | upper}}</strong>
+    <strong>{{toy.title}}</strong>
     <i class="mdi mdi-close-circle" (click)="delete(toy)"></i>
     <span>{{toy.price | currency:'EUR':true:'1.2-2' }}</span>
   </article>

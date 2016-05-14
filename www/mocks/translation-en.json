@@ -1,0 +1,10 @@
+{
+  "title": "toy store",
+  "checkout": "go buy it",
+  "payit": "get my money",
+  "firstname": "first name",
+  "lastname": "last name",
+  "cb": "credit card number",
+  "paymsg": "You have to pay",
+  "bravo": "Thanks for your purchase !"
+}

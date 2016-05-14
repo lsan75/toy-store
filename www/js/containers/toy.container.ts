@@ -3,12 +3,11 @@ import { NgRedux } from 'ng2-redux'
 
 import ToyComponent from '../components/toy.component'
 import ToyActions from '../actions/toy.actions'
-import FadeDirective from '../directives/fade.directive'
 
 @Component({
   selector: 'toy-container',
   template: require('./toy.container.html'),
-  directives: [ToyComponent, FadeDirective]
+  directives: [ToyComponent]
 })
 
 export default class ToyContainer implements OnInit, OnDestroy {

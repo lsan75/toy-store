@@ -1,23 +1,20 @@
-import {TRANSLATE} from '../actions/translate.actions'
+import { TRANSLATE } from '../actions/translate.actions'
+import { clone } from '../helpers/helpers'
 
 function translateReducer(state: any = {translate: {}, langs: []}, action: any) {
-  let newState
+
+  const newState = clone(state)
+
   switch (action.type) {
     case TRANSLATE.SETLANG:
-      newState = JSON.parse( JSON.stringify(state) )
-      return Object.assign({}, newState, { translate: action.translate })
-
-    case TRANSLATE.SELECTLANG:
-      newState = JSON.parse( JSON.stringify(state) )
       newState.langs.map(item => {
         item.selected = item.label === action.lang
         return item
       })
-      return Object.assign({}, newState)
+      return Object.assign(newState, { translate: action.translate })
 
     case TRANSLATE.GETLANGS:
-      newState = JSON.parse( JSON.stringify(state) )
-      return Object.assign({}, newState, { langs: action.langs })
+      return Object.assign(newState, { langs: action.langs })
 
     default:
       return state

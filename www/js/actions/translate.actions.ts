@@ -3,8 +3,7 @@ import I18nService from '../services/i18n.service'
 
 export const TRANSLATE = {
   SETLANG: 'TRANSLATE_SETLANG',
-  GETLANGS: 'TRANSLATE_GETLANGS',
-  SELECTLANG: 'TRANSLATE_SELECTLANG'
+  GETLANGS: 'TRANSLATE_GETLANGS'
 }
 
 @Injectable()
@@ -21,15 +20,14 @@ export default class TranslateActions {
         langs: this.i18nService.getLangs()
       })
 
-      dispatch({
-        type: TRANSLATE.SETLANG,
-        translate: this.i18nService.setLang(lang)
+      return this.i18nService.setLang(lang).subscribe(translate => {
+        dispatch({
+          type: TRANSLATE.SETLANG,
+          translate,
+          lang
+        })
       })
 
-      return dispatch({
-        type: TRANSLATE.SELECTLANG,
-        lang
-      })
     }
   }
 
