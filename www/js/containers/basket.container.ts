@@ -1,16 +1,14 @@
-import { Component, OnDestroy } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 import { Router } from '@angular/router-deprecated'
 import { NgRedux } from 'ng2-redux'
 
-import UpperPipe from '../pipes/upper.pipe'
 import ToyActions from '../actions/toy.actions'
 
 @Component({
   selector: 'basket-component',
-  template: require('./basket.container.html'),
-  pipes: [UpperPipe]
+  template: require('./basket.container.html')
 })
-export default class BasketContainer implements OnDestroy {
+export default class BasketContainer implements OnInit, OnDestroy {
   public toys
   public price
   private unsub
@@ -19,8 +17,10 @@ export default class BasketContainer implements OnDestroy {
     private ngRedux: NgRedux<any>,
     private toyActions: ToyActions,
     private router: Router
-  ) {
-    this.unsub = ngRedux.connect(this.mapStateToThis)(this)
+  ) {}
+
+  ngOnInit() {
+    this.unsub = this.ngRedux.connect(this.mapStateToThis)(this)
   }
 
   ngOnDestroy() {

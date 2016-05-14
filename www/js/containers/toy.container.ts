@@ -12,7 +12,7 @@ import ToyActions from '../actions/toy.actions'
 
 export default class ToyContainer implements OnInit, OnDestroy {
 
-  public toys
+  public toys: Object[]
   private unsub
 
   constructor(

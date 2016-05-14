@@ -34,9 +34,7 @@ export default class HeaderContainer implements OnInit, OnDestroy {
 
   private mapStateToThis(state) {
     return {
-      counter: state.toyReducer.toys.filter(item => {
-        return item.selected
-      }).length,
+      counter: state.toyReducer.counter,
       translate: state.translateReducer.translate,
       langs: state.translateReducer.langs
     };

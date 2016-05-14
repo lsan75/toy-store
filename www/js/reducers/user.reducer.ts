@@ -1,4 +1,4 @@
-import {USER} from '../actions/user.actions'
+import { USER } from '../actions/user.actions'
 
 function userReducer(state: any = {}, action: any) {
 

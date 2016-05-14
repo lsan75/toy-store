@@ -18,11 +18,10 @@ export default class CheckoutContainer implements OnDestroy, OnInit {
   constructor(
     private ngRedux: NgRedux<any>,
     private userActions: UserActions
-  ) {
-    this.unsub = ngRedux.connect(this.mapStateToThis)(this)
-  }
+  ) {}
 
   ngOnInit() {
+    this.unsub = this.ngRedux.connect(this.mapStateToThis)(this)
     this.ngRedux.dispatch(this.userActions.load())
   }
 

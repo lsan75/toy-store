@@ -1,6 +1,20 @@
-import {TOY} from '../actions/toy.actions'
+import { TOY } from '../actions/toy.actions'
+import { clone } from '../helpers/helpers'
 
-function toyReducer(state: any = {toys: [], price: 0}, action: any) {
+interface Toy {
+  toys: Object[],
+  price: number,
+  counter: number
+}
+
+const initToy = {
+  toys: [],
+  price: 0,
+  counter: 0
+}
+
+function toyReducer(state: Toy = initToy, action: any) {
+  const newState = clone(state)
 
   switch (action.type) {
     case TOY.REQUEST:
@@ -10,18 +24,24 @@ function toyReducer(state: any = {toys: [], price: 0}, action: any) {
       return { toys: action.toys }
 
     case TOY.SELECT:
-      const newToys = JSON.parse(JSON.stringify(state.toys))
-      return Object.assign({}, state, { toys: newToys.map(item => {
+      const toys = newState.toys.map(item => {
         if (item.title === action.toy.title) {
           item.selected = !!!item.selected
         }
         return item
-      })})
+      })
+      const counter = toys.filter(item => {
+        return item.selected
+      }).length
+
+      return Object.assign(newState, { toys }, { counter })
 
     case TOY.COMPUTE:
-      return Object.assign({}, state, { price: state.toys.reduce((price, curr) => {
+      const price = newState.toys.reduce((price, curr) => {
         return curr.selected ? price += curr.price : price
-      }, 0)})
+      }, 0)
+
+      return Object.assign(newState, { price })
 
     default:
       return state
