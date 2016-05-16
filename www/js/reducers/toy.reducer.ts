@@ -1,19 +1,13 @@
 import { TOY } from '../actions/toy.actions'
 import { clone } from '../helpers/helpers'
 
-interface Toy {
-  toys: Object[],
-  price: number,
-  counter: number
-}
-
 const initToy = {
   toys: [],
   price: 0,
   counter: 0
 }
 
-function toyReducer(state: Toy = initToy, action: any) {
+function toyReducer(state = initToy, action) {
   const newState = clone(state)
 
   switch (action.type) {
@@ -21,7 +15,7 @@ function toyReducer(state: Toy = initToy, action: any) {
       return state
 
     case TOY.RESPONSE:
-      return { toys: action.toys }
+      return Object.assign(newState, { toys: action.toys })
 
     case TOY.SELECT:
       const toys = newState.toys.map(item => {

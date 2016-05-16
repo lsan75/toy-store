@@ -1,4 +1,4 @@
-import {beforeEachProviders, beforeEach, inject, async} from '@angular/core/testing'
+import { beforeEachProviders, beforeEach, inject, async } from '@angular/core/testing'
 import { TestComponentBuilder } from '@angular/compiler/testing'
 
 import ToyComponent from './toy.component'
@@ -19,12 +19,9 @@ describe('ToyComponent', () => {
 
   it('Should be defined', () => {
     expect(toy).toBeDefined()
-    toy.ngOnInit()
-    expect(toy.toto).toBe('init')
   })
 
   it('Toy should send a request', () => {
-    toy.ngOnInit()
     toy.select('bou')
     toy.selectRequest.subscribe(res => {
       expect(res).toBe('bou')
@@ -47,6 +44,5 @@ describe('ToyComponent', () => {
     })
 
   })
-
 
 })

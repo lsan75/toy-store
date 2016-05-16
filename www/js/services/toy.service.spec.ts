@@ -44,5 +44,15 @@ describe('Toy Service', () => {
     })
   })
 
+  it('Should return an error', () => {
+    mock.connections.subscribe(connection => {
+      const options = new ResponseOptions({
+        body: 'erreur 404',
+        status: 404
+      })
+      connection.mockRespond(new Response(options))
+    })
+    expect(() => toy.getToys().subscribe()).toThrow('Server Error')
+  })
 })
 

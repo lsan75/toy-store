@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core'
+import { Injectable } from '@angular/core'
 import ToyService from '../services/toy.service'
 
 export const TOY = {

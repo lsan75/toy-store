@@ -7,7 +7,7 @@ import ToyActions from '../actions/toy.actions'
 
 // build redux
 import { NgRedux } from 'ng2-redux'
-import store from '../helpers/redux.helper'
+import { store } from '../helpers/redux.helper'
 
 describe('ToyContainer', () => {
 

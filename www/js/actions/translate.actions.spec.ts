@@ -1,28 +1,58 @@
-import {beforeEachProviders, beforeEach, inject} from '@angular/core/testing'
+import { beforeEachProviders, beforeEach, inject } from '@angular/core/testing'
+import { provide } from '@angular/core'
+import { store } from '../helpers/redux.helper'
+import { Observable } from 'rxjs/Rx'
 
 import I18nService from '../services/i18n.service'
+import { TRANSLATE } from '../actions/translate.actions'
 import TranslateActions from '../actions/translate.actions'
+
+class I18nMock {
+  getLangs = () => {}
+  setLang = () => {}
+}
+
+function observe() {
+  return new Observable(obs => obs.next('done'))
+}
 
 describe('Translate Actions', () => {
 
-  let trans, i18n
+  let trans, i18n, redux
 
   beforeEachProviders(() => [
-    I18nService,
-    TranslateActions
+    provide(I18nService, { useClass: I18nMock }),
+    TranslateActions,
+    store()
   ])
 
   beforeEach(inject([TranslateActions, I18nService], (t, i) => {
     trans = t
     i18n = i
-
-    spyOn(i18n, 'setLang').and.returnValue('scandal')
+    redux = {
+      dispatch: () => {}
+    }
+    spyOn(redux, 'dispatch')
+    spyOn(i18n, 'getLangs').and.returnValue('langues')
+    spyOn(i18n, 'setLang').and.callFake(observe)
   }))
 
-  it('Should call i18n and return an action', () => {
+  it('Should get langs', () => {
     const res = trans.setLang('fr')
+    const result = res(redux.dispatch)
+
+    expect(redux.dispatch).toHaveBeenCalledWith({
+      type: TRANSLATE.GETLANGS,
+      langs: 'langues'
+    })
+
     expect(i18n.setLang).toHaveBeenCalledWith('fr')
-    expect(res).toEqual({ type: 'TRANSLATE_SETLANG', translate: 'scandal' })
+    expect(redux.dispatch).toHaveBeenCalledWith({
+      type: TRANSLATE.SETLANG,
+      translate: 'done',
+      lang: 'fr'
+    })
+
   })
 
 })
