@@ -20,7 +20,7 @@ export default class BasketContainer implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.unsub = this.ngRedux.connect(this.mapStateToThis)(this)
+    this.unsub = this.ngRedux.connect(this.mapStateToThis, () => {})(this)
   }
 
   ngOnDestroy() {
@@ -28,7 +28,7 @@ export default class BasketContainer implements OnInit, OnDestroy {
   }
 
   delete(obj) {
-    this.ngRedux.dispatch(this.toyActions.selectToy(obj))
+    this.ngRedux.dispatch(<any>this.toyActions.selectToy(obj))
   }
 
   checkout() {

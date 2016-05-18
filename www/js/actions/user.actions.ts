@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core'
 
 export const USER = {
   LOAD: 'USER_LOAD',
-  UPDATE: 'USER_UPDATE'
+  UPDATE: 'USER_UPDATE',
+  PAY: 'USER_PAY'
 }
 
 @Injectable()
@@ -25,6 +26,12 @@ export default class UserActions {
       dispatch({
         type: USER.UPDATE
       })
+    }
+  }
+
+  pay = () => {
+    return {
+      type: USER.PAY
     }
   }
 }

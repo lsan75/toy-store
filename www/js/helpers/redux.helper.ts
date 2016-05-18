@@ -1,7 +1,9 @@
-import { provider } from 'ng2-redux'
-import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-import * as createLogger from 'redux-logger'
+const provider = require('ng2-redux').provider
+const createStore = require('redux').createStore
+const applyMiddleware = require('redux').applyMiddleware
+const thunk = require('redux-thunk').default
+const createLogger = require('redux-logger')
+
 import rootReducer from '../reducers/index'
 
 const createStoreWithMiddleware = process.env.NODE_ENV === 'dev' ?

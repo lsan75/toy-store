@@ -21,8 +21,8 @@ export default class CheckoutContainer implements OnDestroy, OnInit {
   ) {}
 
   ngOnInit() {
-    this.unsub = this.ngRedux.connect(this.mapStateToThis)(this)
-    this.ngRedux.dispatch(this.userActions.load())
+    this.unsub = this.ngRedux.connect(this.mapStateToThis, () => {})(this)
+    this.ngRedux.dispatch(<any>this.userActions.load())
   }
 
   ngOnDestroy() {
@@ -30,8 +30,8 @@ export default class CheckoutContainer implements OnDestroy, OnInit {
   }
 
   payIt() {
-    this.ngRedux.dispatch(this.userActions.update(this.user))
-    this.payed = true
+    this.ngRedux.dispatch(<any>this.userActions.update(this.user))
+    this.ngRedux.dispatch(<any>this.userActions.pay())
   }
 
   private mapStateToThis(state) {

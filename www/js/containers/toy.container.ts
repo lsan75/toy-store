@@ -21,8 +21,8 @@ export default class ToyContainer implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.unsub = this.ngRedux.connect(this.mapStateToThis)(this)
-    this.ngRedux.dispatch( this.toyActions.getToys() )
+    this.unsub = this.ngRedux.connect(this.mapStateToThis, () => {})(this)
+    this.ngRedux.dispatch( <any>this.toyActions.getToys() )
   }
 
   ngOnDestroy() {
@@ -30,7 +30,7 @@ export default class ToyContainer implements OnInit, OnDestroy {
   }
 
   onSelect(obj) {
-    this.ngRedux.dispatch( this.toyActions.selectToy(obj) )
+    this.ngRedux.dispatch( <any>this.toyActions.selectToy(obj) )
   }
 
   private mapStateToThis(state) {

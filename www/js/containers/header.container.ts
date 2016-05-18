@@ -21,7 +21,7 @@ export default class HeaderContainer implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.unsub = this.ngRedux.connect(this.mapStateToThis)(this)
+    this.unsub = this.ngRedux.connect(this.mapStateToThis, () => {})(this)
   }
 
   ngOnDestroy() {
@@ -29,7 +29,7 @@ export default class HeaderContainer implements OnInit, OnDestroy {
   }
 
   public selectLang = lang => {
-    this.ngRedux.dispatch( this.translateActions.setLang(lang.label) )
+    this.ngRedux.dispatch( <any>this.translateActions.setLang(lang.label) )
   }
 
   private mapStateToThis(state) {

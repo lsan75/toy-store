@@ -1,14 +1,14 @@
 <main class="user">
 
-  <p *ngIf="!payed" class="message">
+  <p *ngIf="!user.payed" class="message">
     {{'paymsg' | i18nSelect:translate}} : {{price | currency:'EUR':'1.2-2'}}
   </p>
 
-  <p *ngIf="payed" class="message">
+  <p *ngIf="user.payed" class="message">
     {{'bravo' | i18nSelect:translate}}
   </p>
 
-  <form (submit)="payIt()" #userForm="ngForm" *ngIf="!payed">
+  <form (submit)="payIt()" #userForm="ngForm" *ngIf="!user.payed">
 
     <p>
       <label for="firstname">{{'firstname' | i18nSelect:translate}}</label>

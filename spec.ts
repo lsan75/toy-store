@@ -1,4 +1,4 @@
-/// <reference path="./typings/browser.d.ts" />
+/// <reference path="./typings/index.d.ts" />
 
 /**
  *  Polyfills
@@ -32,11 +32,6 @@ testing.setBaseTestProviders(
   browser.TEST_BROWSER_DYNAMIC_APPLICATION_PROVIDERS
 );
 Object.assign(global, testing)
-
-// Redux
-import 'redux/dist/redux'
-import 'redux-thunk/dist/redux-thunk'
-import 'redux-logger/src/index'
 
 // RxJS
 import 'rxjs/Rx'
