@@ -5,7 +5,7 @@ import UserActions from '../actions/user.actions'
 
 @Component({
   selector: 'checkout-container',
-  template: require('./checkout.container.html'),
+  templateUrl: './checkout.container.html',
   providers: [UserActions]
 })
 

@@ -6,7 +6,7 @@ import ToyActions from '../actions/toy.actions'
 
 @Component({
   selector: 'basket-component',
-  template: require('./basket.container.html')
+  templateUrl: './basket.container.html'
 })
 export default class BasketContainer implements OnInit, OnDestroy {
   public toys

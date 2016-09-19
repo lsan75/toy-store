@@ -9,12 +9,7 @@ module.exports = [
   },
   {
     test: /\.ts$/,
-    loader: 'awesome-typescript-loader',
-    query: {
-      compilerOptions: {
-        removeComments: true
-      }
-    }
+    loader: 'awesome-typescript!angular2-template'
   },
   {
     test: /\.(woff|woff2|ttf|eot|svg|gif|jpg|jpeg|png|ico)(\?]?.*)?$/,

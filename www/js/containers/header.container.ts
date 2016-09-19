@@ -5,7 +5,7 @@ import TranslateActions from '../actions/translate.actions'
 
 @Component({
   selector: 'header-container',
-  template: require('./header.container.html')
+  templateUrl: './header.container.html'
 })
 export default class HeaderContainer implements OnInit, OnDestroy {
   public counter
