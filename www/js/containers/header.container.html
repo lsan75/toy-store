@@ -1,6 +1,6 @@
 <header>
   <h1>
-    <a [routerLink]="['Toys']">{{'title' | i18nSelect:translate}}</a>
+    <a [routerLink]="['/toys']">{{'title' | i18nSelect:translate}}</a>
   </h1>
 
   <aside class="langs">
@@ -14,7 +14,7 @@
   </aside>
 
   <aside>
-    <a [routerLink]="['Basket']">
+    <a [routerLink]="['/basket']">
       <i class="mdi mdi-basket"></i>
       <span *ngIf="counter">{{counter}}</span>
     </a>

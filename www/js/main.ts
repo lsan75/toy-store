@@ -1,21 +1,11 @@
-// imports libs
-import { bootstrap } from '@angular/platform-browser-dynamic/index'
-import { provide } from '@angular/core'
-import { HTTP_PROVIDERS } from '@angular/http'
-import { ROUTER_PROVIDERS } from '@angular/router-deprecated'
-import { LocationStrategy, HashLocationStrategy } from '@angular/common/index'
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic'
+import { enableProdMode } from '@angular/core'
 
-// redux imports
-import { store } from './helpers/redux.helper'
+import AppModule from './app.module'
 
-// import the main container
-import MainContainer from './containers/main.container'
+if (process.env.NODE_ENV === 'production') {
+  enableProdMode()
+}
 
-// bootstrap angular with the main container
-bootstrap(MainContainer, [
-  HTTP_PROVIDERS,
-  ROUTER_PROVIDERS,
-  provide(LocationStrategy, { useClass: HashLocationStrategy }),
-  store(),
-  provide(Window, { useValue: window })
-])
+const platform = platformBrowserDynamic()
+platform.bootstrapModule(AppModule)

@@ -8,11 +8,11 @@ export const USER = {
 
 @Injectable()
 export default class UserActions {
-  constructor(private window: Window) {}
+  constructor() {}
 
   load = () => {
     return dispatch => {
-      const user = this.window.localStorage.getItem('toyuser')
+      const user = localStorage.getItem('toyuser')
       dispatch({
         type: USER.LOAD,
         user: JSON.parse(user)
@@ -22,7 +22,7 @@ export default class UserActions {
 
   update = user => {
     return dispatch => {
-      this.window.localStorage.setItem('toyuser', JSON.stringify(user))
+      localStorage.setItem('toyuser', JSON.stringify(user))
       dispatch({
         type: USER.UPDATE
       })

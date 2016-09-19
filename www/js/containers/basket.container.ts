@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
-import { Router } from '@angular/router-deprecated'
+import { Router }  from '@angular/router'
 import { NgRedux } from 'ng2-redux'
 
 import ToyActions from '../actions/toy.actions'
@@ -32,7 +32,7 @@ export default class BasketContainer implements OnInit, OnDestroy {
   }
 
   checkout() {
-    this.router.navigate(['Checkout'])
+    this.router.navigate(['/checkout'])
   }
 
   private mapStateToThis(state) {

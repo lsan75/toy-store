@@ -19,7 +19,8 @@ import '@angular/core'
 import '@angular/http'
 import '@angular/platform-browser'
 import '@angular/platform-browser-dynamic'
-import '@angular/router-deprecated'
+import '@angular/router'
+import '@angular/forms'
 
 // RxJS
 import 'rxjs/Rx'

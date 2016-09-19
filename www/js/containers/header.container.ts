@@ -1,13 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
-import { ROUTER_DIRECTIVES } from '@angular/router-deprecated'
 import { NgRedux } from 'ng2-redux'
 
 import TranslateActions from '../actions/translate.actions'
 
 @Component({
   selector: 'header-container',
-  template: require('./header.container.html'),
-  directives: [ROUTER_DIRECTIVES]
+  template: require('./header.container.html')
 })
 export default class HeaderContainer implements OnInit, OnDestroy {
   public counter

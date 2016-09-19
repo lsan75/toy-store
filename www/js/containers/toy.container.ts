@@ -1,13 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { NgRedux } from 'ng2-redux'
 
-import ToyComponent from '../components/toy.component'
 import ToyActions from '../actions/toy.actions'
 
 @Component({
   selector: 'toy-container',
-  template: require('./toy.container.html'),
-  directives: [ToyComponent]
+  template: require('./toy.container.html')
 })
 
 export default class ToyContainer implements OnInit, OnDestroy {

@@ -2,15 +2,17 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
+        "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
+        "removeComments": false,
+        "noImplicitAny": false,
         "sourceMap": true
     },
     "exclude": [
-        "./node_modules",
-        "./typings/main.d.ts",
-        "./typings/main",
-        "./www"
+        "node_modules",
+        "typings",
+        "www"
     ],
     "filesGlob": [
         "./www/**/*.ts",
@@ -29,9 +31,6 @@
         "rewriteTsconfig": false
     },
     "files": [
-        "./www/js/actions/temp.actions.spec.ts",
-        "./www/js/actions/temp.actions.ts",
-        "./www/js/actions/temp.service.ts",
         "./www/js/actions/toy.actions.ts",
         "./www/js/actions/translate.actions.spec.ts",
         "./www/js/actions/translate.actions.ts",
@@ -43,13 +42,13 @@
         "./www/js/containers/checkout.container.ts",
         "./www/js/containers/header.container.spec.ts",
         "./www/js/containers/header.container.ts",
+        "./www/js/containers/main.container.spec.ts",
         "./www/js/containers/main.container.ts",
         "./www/js/containers/toy.container.spec.ts",
         "./www/js/containers/toy.container.ts",
+        "./www/js/helpers/helpers.ts",
         "./www/js/helpers/redux.helper.ts",
         "./www/js/main.ts",
-        "./www/js/pipes/upper.pipe.spec.ts",
-        "./www/js/pipes/upper.pipe.ts",
         "./www/js/reducers/index.ts",
         "./www/js/reducers/toy.reducer.spec.ts",
         "./www/js/reducers/toy.reducer.ts",
@@ -59,7 +58,6 @@
         "./www/js/services/toy.service.spec.ts",
         "./www/js/services/toy.service.ts",
         "./index.ts",
-        "./spec.ts",
-        "typings/browser.d.ts"
+        "./spec.ts"
     ]
 }

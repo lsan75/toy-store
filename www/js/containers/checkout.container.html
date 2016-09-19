@@ -8,7 +8,7 @@
     {{'bravo' | i18nSelect:translate}}
   </p>
 
-  <form (submit)="payIt()" #userForm="ngForm" *ngIf="!user.payed">
+  <form (ngSubmit)="payIt()" #userForm="ngForm" *ngIf="!user.payed">
 
     <p>
       <label for="firstname">{{'firstname' | i18nSelect:translate}}</label>
@@ -16,8 +16,8 @@
         type="text"
         [(ngModel)]="user.firstname"
         required
-        ngControl="firstname"
-        #firstname="ngForm"
+        name="firstname"
+        #firstname="ngModel"
       >
     </p>
 
@@ -27,8 +27,8 @@
         type="text"
         [(ngModel)]="user.lastname"
         required
-        ngControl="lastname"
-        #lastname="ngForm"
+        name="lastname"
+        #lastname="ngModel"
       >
     </p>
 
@@ -38,8 +38,8 @@
         type="email"
         [(ngModel)]="user.email"
         required
-        ngControl="email"
-        #email="ngForm"
+        name="email"
+        #email="ngModel"
         pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
       >
     </p>
@@ -53,14 +53,14 @@
         pattern="[0-9]+"
         minlength="16"
         maxlength="16"
-        ngControl="creditcard"
-        #creditcard="ngForm"
+        name="creditcard"
+        #creditcard="ngModel"
         [readonly]="!email.valid"
       >
     </p>
 
     <footer>
-      <button [disabled]="!userForm.form.valid">{{'payit' | i18nSelect:translate}}</button>
+      <button type="submit" [disabled]="!userForm.form.valid">{{'payit' | i18nSelect:translate}}</button>
     </footer>
 
   </form>

@@ -9,3 +9,5 @@ reports/
 reports/*
 dist/
 dist/*
+typings/
+typings/*
