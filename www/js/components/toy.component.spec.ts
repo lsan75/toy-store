@@ -31,7 +31,6 @@ class TestHost {
 }
 
 describe('ToyComponent', () => {
-  let toy
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -40,11 +39,6 @@ describe('ToyComponent', () => {
 
     fixture = TestBed.createComponent(ToyComponent)
     comp = fixture.componentInstance
-
-  })
-
-  it('Should be defined', () => {
-    expect(comp).toBeDefined()
   })
 
   it('Should have a root article', () => {

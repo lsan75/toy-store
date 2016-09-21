@@ -10,16 +10,12 @@
         "sourceMap": true
     },
     "exclude": [
-        "node_modules",
-        "typings",
-        "www"
+        "node_modules"
     ],
     "filesGlob": [
         "./www/**/*.ts",
         "./index.ts",
-        "./spec.ts",
-        "!./node_modules/**/*.ts",
-        "typings/browser.d.ts"
+        "!./node_modules/**/*.ts"
     ],
     "awesomeTypescriptLoaderOptions": {
         "resolveGlobs": true,
@@ -37,12 +33,12 @@
         "./www/js/actions/user.actions.ts",
         "./www/js/app.module.ts",
         "./www/js/app.routes.ts",
+        "./www/js/components/toy.component.spec.ts",
         "./www/js/components/toy.component.ts",
         "./www/js/containers/basket.container.ts",
         "./www/js/containers/checkout.container.ts",
         "./www/js/containers/header.container.ts",
         "./www/js/containers/main.container.ts",
-        "./www/js/containers/toy.container.spec.ts",
         "./www/js/containers/toy.container.ts",
         "./www/js/helpers/helpers.ts",
         "./www/js/main.ts",
@@ -52,7 +48,6 @@
         "./www/js/reducers/user.reducer.ts",
         "./www/js/services/i18n.service.ts",
         "./www/js/services/toy.service.ts",
-        "./index.ts",
-        "./spec.ts"
+        "./index.ts"
     ]
 }
