@@ -14,7 +14,7 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      { pattern: 'spec.ts', included: true, watched: false }
+      {pattern: 'karma-test-shim.js', watched: false}
     ],
 
     // list of files to exclude
@@ -23,18 +23,11 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'spec.ts': ['webpack'],
-      'www/js/**/*.spec.ts': ['webpack', 'sourcemap'],
-      'www/js/**/!(*.spec)+(.ts)': ['coverage', 'webpack', 'sourcemap']
+      'karma-test-shim.js': ['webpack', 'sourcemap']
     },
 
     webpackMiddleware: {
-      noInfo: true,
-      stats: {
-        chunkModules: false,
-        colors: true,
-        modules: false
-      }
+      stats: 'errors-only'
     },
 
     webpackServer: { noInfo: true },
@@ -76,21 +69,18 @@ module.exports = function (config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_DISABLE,
+    logLevel: config.LOG_INFO,
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: false
 
-    // Concurrency level
-    // how many browser should be started simultaneous
-    concurrency: 1
   })
 }

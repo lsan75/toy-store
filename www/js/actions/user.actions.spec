@@ -1,5 +1,4 @@
-import { beforeEachProviders, beforeEach, afterEach, inject } from '@angular/core/testing'
-import { provide } from '@angular/core'
+import { inject } from '@angular/core/testing'
 
 import UserActions, {USER} from '../actions/user.actions'
 
@@ -7,11 +6,6 @@ describe('User Actions', () => {
 
   let user
   let redux
-
-  beforeEachProviders(() => [
-    UserActions,
-    provide(Window, {useValue: window})
-  ])
 
   beforeEach(inject([UserActions], u => {
     user = u

@@ -9,6 +9,7 @@ import { Component, ChangeDetectionStrategy, EventEmitter } from '@angular/core'
 })
 export default class ToyComponent {
   public selectRequest = new EventEmitter()
+  public toy
 
   select = toy => {
     this.selectRequest.emit(toy)

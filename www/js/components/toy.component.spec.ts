@@ -1,48 +1,73 @@
-import { beforeEachProviders, beforeEach, inject, async } from '@angular/core/testing'
-import { TestComponentBuilder } from '@angular/compiler/testing'
+/// <reference path="../../../typings/index.d.ts" />
+
+import { Component } from '@angular/core'
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { By } from '@angular/platform-browser'
+import { DebugElement } from '@angular/core'
 
 import ToyComponent from './toy.component'
 
+let comp: ToyComponent
+let fixture: ComponentFixture<ToyComponent>
+let el: DebugElement
+
+@Component({
+  template: `
+    <toy-component
+      [toy]="toy"
+      (selectRequest)="onSelect($event)">
+    </toy-component>
+  `
+})
+class TestHost {
+  public toy = {
+    icon: 'toto',
+    selected: true
+  }
+  public selectedToy
+  public onSelect(toy) {
+    this.selectedToy = toy
+  }
+}
+
 describe('ToyComponent', () => {
   let toy
-  let tcb
 
-  beforeEachProviders(() => [
-    TestComponentBuilder,
-    ToyComponent
-  ])
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [ToyComponent, TestHost]
+    })
 
-  beforeEach(async(inject([TestComponentBuilder, ToyComponent], (_tcb, _toy) => {
-    toy = _toy
-    tcb = _tcb
-  })))
+    fixture = TestBed.createComponent(ToyComponent)
+    comp = fixture.componentInstance
+
+  })
 
   it('Should be defined', () => {
-    expect(toy).toBeDefined()
+    expect(comp).toBeDefined()
   })
 
-  it('Toy should send a request', () => {
-    toy.select('bou')
-    toy.selectRequest.subscribe(res => {
-      expect(res).toBe('bou')
-    })
+  it('Should have a root article', () => {
+    el = fixture.debugElement.query(By.css('i'))
+    comp.toy = { icon: 'toto' }
+    fixture.detectChanges()
+    expect(el.nativeElement.className).toBe('mdi mdi-toto')
   })
 
-  it('Should change state', done => {
-
-    tcb.createAsync(ToyComponent).then(fixture => {
-
-      const instance = fixture.componentInstance
-      const element = fixture.nativeElement
-
-      instance.toy = {selected: true, icon: 'toto'}
-      fixture.detectChanges()
-      expect(element.querySelector('article').className).toBe('toy selected')
-      expect(element.querySelector('i').className).toBe('mdi mdi-toto')
-
-      done()
-    })
-
+  it('Should be selected', () => {
+    el = fixture.debugElement.query(By.css('article'))
+    comp.toy = { selected: true }
+    fixture.detectChanges()
+    expect(el.nativeElement.className).toBe('toy selected')
   })
 
+  it('Should select a toy', () => {
+    const hostFixture = TestBed.createComponent(TestHost)
+    const hostComp = hostFixture.componentInstance
+    const hostEl = hostFixture.debugElement.query(By.css('article'))
+    hostFixture.detectChanges()
+
+    hostEl.triggerEventHandler('click', null)
+    expect(hostComp.selectedToy).toEqual(hostComp.toy)
+  })
 })

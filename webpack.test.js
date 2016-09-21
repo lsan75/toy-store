@@ -6,7 +6,6 @@ module.exports = {
     extensions: ['', '.js', '.ts']
   },
   devtool: 'inline-source-map',
-  entry: {},
   module: {
     loaders: loaders,
     postLoaders: [

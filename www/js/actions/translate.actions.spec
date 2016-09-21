@@ -1,6 +1,4 @@
-import { beforeEachProviders, beforeEach, inject } from '@angular/core/testing'
-import { provide } from '@angular/core'
-import { store } from '../helpers/redux.helper'
+import { inject } from '@angular/core/testing'
 import { Observable } from 'rxjs/Rx'
 
 import I18nService from '../services/i18n.service'
@@ -19,12 +17,6 @@ function observe() {
 describe('Translate Actions', () => {
 
   let trans, i18n, redux
-
-  beforeEachProviders(() => [
-    provide(I18nService, { useClass: I18nMock }),
-    TranslateActions,
-    store()
-  ])
 
   beforeEach(inject([TranslateActions, I18nService], (t, i) => {
     trans = t

@@ -1,0 +1,42 @@
+/// <reference path="../../../typings/index.d.ts" />
+
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { By } from '@angular/platform-browser'
+import { DebugElement } from '@angular/core'
+import { NgRedux } from 'ng2-redux'
+import ToyContainer from './toy.container'
+import ToyComponent from '../components/toy.component'
+import ToyActions from '../actions/toy.actions'
+
+let comp: ToyContainer
+let fixture: ComponentFixture<ToyContainer>
+let el: DebugElement
+
+class ToyActionsStub {
+
+}
+
+describe('ToyContainer', () => {
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [ToyContainer, ToyComponent], // declare the test component
+      providers: [ NgRedux, ToyActions ]
+    })
+
+    fixture = TestBed.createComponent(ToyContainer)
+
+    comp = fixture.componentInstance; // BannerComponent test instance
+
+    // get title DebugElement by element name
+    el = fixture.debugElement.query(By.css('toy-component'))
+  })
+
+  it('Should have components', () => {
+    spyOn(ToyActions, 'getToys')
+    comp.toys = [{}, {}]
+    fixture.detectChanges()
+    expect(el.nativeElement.length).toBeGreaterThan(0)
+  })
+
+})

@@ -1,7 +1,6 @@
-import {beforeEachProviders, beforeEach, afterEach, inject} from '@angular/core/testing'
-import {MockBackend} from '@angular/http/testing'
-import {provide} from '@angular/core'
-import {HTTP_PROVIDERS, XHRBackend, Response, ResponseOptions, Headers} from '@angular/http'
+import { inject } from '@angular/core/testing'
+import { MockBackend } from '@angular/http/testing'
+import { XHRBackend, Response, ResponseOptions, Headers } from '@angular/http'
 
 import ToyService from '../services/toy.service'
 
@@ -9,12 +8,6 @@ describe('Toy Service', () => {
 
   let toy
   let mock
-
-  beforeEachProviders(() => [
-    ToyService,
-    HTTP_PROVIDERS,
-    provide(XHRBackend, {useClass: MockBackend})
-  ])
 
   beforeEach(inject([XHRBackend, ToyService], (m, t) => {
     toy = t
