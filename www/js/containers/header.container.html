@@ -5,7 +5,7 @@
 
   <aside class="langs">
     <span
-      *ngFor="let lang of langs"
+      *ngFor="let lang of langs | async"
       [ngClass]="{selected: lang.selected}"
       (click)="selectLang(lang)"
     >
@@ -16,7 +16,7 @@
   <aside>
     <a [routerLink]="['/basket']">
       <i class="mdi mdi-basket"></i>
-      <span *ngIf="counter">{{counter}}</span>
+      <span *ngIf="counter">{{counter | async}}</span>
     </a>
   </aside>
 </header>

@@ -1,40 +1,36 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'
-import { NgRedux } from 'ng2-redux'
+import { Component, OnInit } from '@angular/core'
+import { Observable } from 'rxjs/Observable'
+import { NgRedux, select } from 'ng2-redux'
 
 import ToyActions from '../actions/toy.actions'
+
+interface IToys {
+  icon: string
+  price: number
+  title: string
+  selected?: boolean
+}
 
 @Component({
   selector: 'toy-container',
   templateUrl: './toy.container.html'
 })
 
-export default class ToyContainer implements OnInit, OnDestroy {
-
-  public toys: Object[]
-  private unsub
+export default class ToyContainer implements OnInit {
 
   constructor(
     private ngRedux: NgRedux<any>,
     private toyActions: ToyActions
   ) {}
 
-  ngOnInit() {
-    this.unsub = this.ngRedux.connect(this.mapStateToThis, () => {})(this)
-    this.ngRedux.dispatch( <any>this.toyActions.getToys() )
-  }
+  @select(state => state.toyReducer.toys) toys: Observable<IToys[]>
 
-  ngOnDestroy() {
-    this.unsub()
+  ngOnInit() {
+    this.ngRedux.dispatch( <any>this.toyActions.getToys() )
   }
 
   onSelect(obj) {
     this.ngRedux.dispatch( <any>this.toyActions.selectToy(obj) )
-  }
-
-  private mapStateToThis(state) {
-    return {
-      toys: state.toyReducer.toys
-    }
   }
 
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'
-import { NgRedux } from 'ng2-redux'
+import { Component, OnInit } from '@angular/core'
+import { Observable } from 'rxjs'
+import { NgRedux, select } from 'ng2-redux'
 
 import TranslateActions from '../actions/translate.actions'
 
@@ -7,35 +8,25 @@ import TranslateActions from '../actions/translate.actions'
   selector: 'header-container',
   templateUrl: './header.container.html'
 })
-export default class HeaderContainer implements OnInit, OnDestroy {
-  public counter
+export default class HeaderContainer implements OnInit {
   public translate
-  public langs
-  private unsub
 
   constructor(
     private ngRedux: NgRedux<any>,
     private translateActions: TranslateActions
   ) {}
 
-  ngOnInit() {
-    this.unsub = this.ngRedux.connect(this.mapStateToThis, () => {})(this)
-  }
-
-  ngOnDestroy() {
-    this.unsub()
-  }
-
   public selectLang = lang => {
     this.ngRedux.dispatch( <any>this.translateActions.setLang(lang.label) )
   }
 
-  private mapStateToThis(state) {
-    return {
-      counter: state.toyReducer.counter,
-      translate: state.translateReducer.translate,
-      langs: state.translateReducer.langs
-    };
-  }
+  @select(state => state.toyReducer.counter) counter: Observable<number>
+  @select(state => state.translateReducer.translate) translateMap: Observable<Object>
+  @select(state => state.translateReducer.langs) langs: Observable<any>
 
+  ngOnInit() {
+    this.translateMap.subscribe(res => {
+      this.translate = res
+    })
+  }
 }

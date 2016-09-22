@@ -1,5 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'
-import { NgRedux } from 'ng2-redux'
+import { Component, OnInit } from '@angular/core'
+import { Observable } from 'rxjs/Observable'
+import { NgRedux, select } from 'ng2-redux'
 
 import UserActions from '../actions/user.actions'
 
@@ -9,37 +10,31 @@ import UserActions from '../actions/user.actions'
   providers: [UserActions]
 })
 
-export default class CheckoutContainer implements OnDestroy, OnInit {
-  public payed
+export default class CheckoutContainer implements OnInit {
+  public translate
   public user
-  public price
-  private unsub
-
   constructor(
     private ngRedux: NgRedux<any>,
     private userActions: UserActions
   ) {}
 
-  ngOnInit() {
-    this.unsub = this.ngRedux.connect(this.mapStateToThis, () => {})(this)
-    this.ngRedux.dispatch(<any>this.userActions.load())
-  }
+  @select(state => state.userReducer) userMap: Observable<any>
+  @select(state => state.toyReducer.price) price: Observable<number>
+  @select(state => state.translateReducer.translate) translateMap: Observable<any>
 
-  ngOnDestroy() {
-    this.unsub()
+  ngOnInit() {
+    this.ngRedux.dispatch(<any>this.userActions.load())
+    this.translateMap.subscribe(res => {
+      this.translate = res
+    })
+    this.userMap.subscribe(res => {
+      this.user = res
+    })
   }
 
   payIt() {
     this.ngRedux.dispatch(<any>this.userActions.update(this.user))
     this.ngRedux.dispatch(<any>this.userActions.pay())
-  }
-
-  private mapStateToThis(state) {
-    return {
-      user: state.userReducer,
-      price: state.toyReducer.price,
-      translate: state.translateReducer.translate
-    }
   }
 
 }

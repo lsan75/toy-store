@@ -1,6 +1,6 @@
 <main class="basket">
 
-  <article *ngFor="let toy of toys">
+  <article *ngFor="let toy of toys | async">
     <i class="mdi mdi-{{toy.icon}}"></i>
     <strong>{{toy.title}}</strong>
     <i class="mdi mdi-close-circle" (click)="delete(toy)"></i>
@@ -9,7 +9,7 @@
 
   <aside>
     <strong>Total :</strong>
-    <span>{{price | currency:'EUR':true:'1.2-2' }}</span>
+    <span>{{price | async | currency:'EUR':true:'1.2-2'}}</span>
   </aside>
 
   <footer>

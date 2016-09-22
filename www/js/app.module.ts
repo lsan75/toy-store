@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { FormsModule } from '@angular/forms'
 import { HttpModule } from '@angular/http'
-import { NgReduxModule } from 'ng2-redux'
+import { NgReduxModule, NgRedux } from 'ng2-redux'
 import { routing } from './app.routes'
 
 import { LocationStrategy, HashLocationStrategy } from '@angular/common/index'
@@ -17,7 +17,6 @@ import ToyComponent from './components/toy.component'
 import HeaderContainer from './containers/header.container'
 
 // import redux store
-import { NgRedux } from 'ng2-redux'
 import rootReducer, { IAppState } from './reducers/index'
 const thunk = require('redux-thunk').default
 const createLogger = require('redux-logger')

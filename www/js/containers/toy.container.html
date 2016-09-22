@@ -1,7 +1,7 @@
 <main class="toy-page">
 
   <toy-component
-    *ngFor="let toy of toys"
+    *ngFor="let toy of toys | async"
     [toy]="toy"
     (selectRequest)="onSelect($event)"
   >

@@ -1,7 +1,7 @@
 <main class="user">
 
   <p *ngIf="!user.payed" class="message">
-    {{'paymsg' | i18nSelect:translate}} : {{price | currency:'EUR':'1.2-2'}}
+    {{'paymsg' | i18nSelect:translate}} : {{price | async | currency:'EUR':'1.2-2'}}
   </p>
 
   <p *ngIf="user.payed" class="message">
