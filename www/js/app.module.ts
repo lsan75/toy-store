@@ -46,15 +46,17 @@ export default class AppModule {
   ) {
 
     const extensions = [thunk]
+    const myTools = []
     if (process.env.NODE_ENV === 'dev') {
       extensions.push(createLogger())
+      myTools.push(devTools.isEnabled() ? devTools.enhancer() : f => f)
     }
 
     ngRedux.configureStore(
       rootReducer,
       {},
       extensions,
-      [devTools.isEnabled() ? devTools.enhancer() : f => f]
+      myTools
     )
   }
 }
