@@ -1,5 +1,4 @@
 import { TOY } from '../actions/toy.actions'
-import { clone } from '../helpers/helpers'
 
 const initToy = {
   toys: [],
@@ -8,17 +7,16 @@ const initToy = {
 }
 
 function toyReducer(state = initToy, action) {
-  const newState = clone(state)
 
   switch (action.type) {
     case TOY.REQUEST:
       return state
 
     case TOY.RESPONSE:
-      return Object.assign(newState, { toys: action.toys })
+      return Object.assign({}, state, { toys: action.toys })
 
     case TOY.SELECT:
-      const toys = newState.toys.map(item => {
+      const toys = state.toys.map(item => {
         if (item.title === action.toy.title) {
           item.selected = !!!item.selected
         }
@@ -28,14 +26,14 @@ function toyReducer(state = initToy, action) {
         return item.selected
       }).length
 
-      return Object.assign(newState, { toys }, { counter })
+      return Object.assign({}, state, { toys }, { counter })
 
     case TOY.COMPUTE:
-      const price = newState.toys.reduce((price, curr) => {
+      const price = state.toys.reduce((price, curr) => {
         return curr.selected ? price += curr.price : price
       }, 0)
 
-      return Object.assign(newState, { price })
+      return Object.assign({}, state, { price })
 
     default:
       return state

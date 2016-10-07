@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { FormsModule } from '@angular/forms'
 import { HttpModule } from '@angular/http'
-import { NgReduxModule, NgRedux } from 'ng2-redux'
+import { NgReduxModule, NgRedux, DevToolsExtension } from 'ng2-redux'
 import { routing } from './app.routes'
 
 import { LocationStrategy, HashLocationStrategy } from '@angular/common/index'
@@ -40,7 +40,10 @@ const createLogger = require('redux-logger')
   bootstrap: [MainContainer]
 })
 export default class AppModule {
-  constructor(private ngRedux: NgRedux<IAppState>) {
+  constructor(
+    private ngRedux: NgRedux<IAppState>,
+    private devTools: DevToolsExtension
+  ) {
 
     const extensions = [thunk]
     if (process.env.NODE_ENV === 'dev') {
@@ -50,7 +53,8 @@ export default class AppModule {
     ngRedux.configureStore(
       rootReducer,
       {},
-      extensions
+      extensions,
+      [devTools.isEnabled() ? devTools.enhancer() : f => f]
     )
   }
 }

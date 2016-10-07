@@ -1,9 +1,6 @@
 import { USER } from '../actions/user.actions'
-import { clone } from '../helpers/helpers'
 
 function userReducer(state: any = {}, action: any) {
-
-  const newState = clone(state)
 
   switch (action.type) {
     case USER.LOAD:
@@ -13,7 +10,7 @@ function userReducer(state: any = {}, action: any) {
       return state
 
     case USER.PAY:
-      return Object.assign(newState, {payed: true})
+      return Object.assign({}, state, {payed: true})
 
     default:
       return state

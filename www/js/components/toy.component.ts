@@ -9,7 +9,7 @@ export default class ToyComponent {
   @Input() toy
   @Output() selectRequest = new EventEmitter()
 
-  select = toy => {
+  public select = toy => {
     this.selectRequest.emit(toy)
   }
 }
