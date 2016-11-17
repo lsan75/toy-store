@@ -18,7 +18,9 @@ function toyReducer(state = initToy, action) {
     case TOY.SELECT:
       const toys = state.toys.map(item => {
         if (item.title === action.toy.title) {
-          item.selected = !!!item.selected
+          const newItem = Object.assign({}, item)
+          newItem.selected = !!!newItem.selected
+          return newItem
         }
         return item
       })
