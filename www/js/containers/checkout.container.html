@@ -8,28 +8,33 @@
     {{'bravo' | i18nSelect:translate}}
   </p>
 
-  <form (ngSubmit)="payIt()" #userForm="ngForm" *ngIf="!user.payed">
+  <form (ngSubmit)="payIt()" #userForm="ngForm" *ngIf="!user.payed" novalidate>
 
     <p>
       <label for="firstname">{{'firstname' | i18nSelect:translate}}</label>
-      <input
+
+      <toy-input [(ngModel)]="user.firstname" name="firstname" required></toy-input> 
+      {{user.firstname}}
+
+      <!--input
         type="text"
         [(ngModel)]="user.firstname"
         required
         name="firstname"
         #firstname="ngModel"
-      >
+      -->
     </p>
 
     <p>
       <label for="lastname">{{'lastname' | i18nSelect:translate}}</label>
-      <input
+      <toy-input [(ngModel)]="user.lastname" name="lastname" required></toy-input>
+
+      <!--input
         type="text"
         [(ngModel)]="user.lastname"
         required
         name="lastname"
-        #lastname="ngModel"
-      >
+      -->
     </p>
 
     <p>

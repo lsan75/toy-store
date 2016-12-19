@@ -14,7 +14,7 @@ plugins.push(
 plugins.push(
   new webpack.optimize.UglifyJsPlugin({
     sourceMap: false,
-    mangle: false,
+    mangle: true,
     minimize: true,
     compress: {
       warnings: false

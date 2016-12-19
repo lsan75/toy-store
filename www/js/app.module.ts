@@ -15,6 +15,7 @@ import BasketContainer from './containers/basket.container'
 import CheckoutContainer from './containers/checkout.container'
 import ToyComponent from './components/toy.component'
 import HeaderContainer from './containers/header.container'
+import { ToyInputComponent } from './components/toy-input.component'
 
 // import redux store
 import rootReducer, { IAppState } from './reducers/index'
@@ -26,7 +27,7 @@ const createLogger = require('redux-logger')
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgReduxModule,
+    NgReduxModule.forRoot(),
     routing
   ],
   declarations: [
@@ -35,7 +36,8 @@ const createLogger = require('redux-logger')
     ToyContainer,
     BasketContainer,
     CheckoutContainer,
-    ToyComponent
+    ToyComponent,
+    ToyInputComponent
   ],
   bootstrap: [MainContainer]
 })
