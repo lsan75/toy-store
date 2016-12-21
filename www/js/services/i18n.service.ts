@@ -13,9 +13,9 @@ export default class I18nService {
 
   setLang = lang => {
 
-    return this.http.get(`./mocks/translation-${lang}.json`)
+    return this.http.get(`http://localhost:3000/translate`)
       .map((res: Response) => {
-        return res.json()
+        return res.json()[lang]
       })
       .catch(error => Observable.throw(error._body || 'Server Error'))
 

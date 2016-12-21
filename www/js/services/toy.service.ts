@@ -10,7 +10,7 @@ export default class ToyService {
 
   getToys = () => {
 
-    return this.http.get('./mocks/toys.json')
+    return this.http.get('http://localhost:3000/toys')
       .map((res: Response) => {
         return res.json()
       })

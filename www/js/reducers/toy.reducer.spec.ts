@@ -1,4 +1,3 @@
-/// <reference path="../../../typings/index.d.ts" />
 
 import toyReducer from './toy.reducer'
 import { TOY } from '../actions/toy.actions'

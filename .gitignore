@@ -1,3 +1,4 @@
+.DS_Store
 !.gitkeep
 *.log
 node_modules/
@@ -5,9 +6,15 @@ node_modules/*
 tmp
 bin/
 bin/*
+coverage/
+coverage/*
 reports/
 reports/*
 dist/
 dist/*
-typings
-typings/*
+compiled/
+compiled/*
+src/aot/
+src/aot/*
+.idea/
+.vscode/

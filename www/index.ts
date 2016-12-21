@@ -1,10 +1,8 @@
-/// <reference path="./typings/index.d.ts" />
-
 /*
  * styles
  */
-import './node_modules/mdi/css/materialdesignicons.min.css'
-import './www/less/style.less'
+import 'mdi/css/materialdesignicons.min.css'
+import './less/style.less'
 
 /**
  *  Javascript libraries
@@ -28,4 +26,4 @@ import 'rxjs/Rx'
 /**
 *  Main App
 */
-import './www/js/main'
+import './js/main'

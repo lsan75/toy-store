@@ -7,15 +7,22 @@
         "experimentalDecorators": true,
         "removeComments": false,
         "noImplicitAny": false,
-        "sourceMap": true
+        "sourceMap": true,
+        "typeRoots": [
+            "./node_modules/@types"
+        ],
+        "types": [
+            "core-js",
+            "node"
+        ]
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "dist"
     ],
     "filesGlob": [
         "./www/**/*.ts",
-        "./index.ts",
-        "!./node_modules/**/*.ts"
+        "./index.ts"
     ],
     "awesomeTypescriptLoaderOptions": {
         "resolveGlobs": true,
@@ -29,10 +36,12 @@
     },
     "files": [
         "./www/js/actions/toy.actions.ts",
+        "./www/js/actions/translate.actions.spec.ts",
         "./www/js/actions/translate.actions.ts",
         "./www/js/actions/user.actions.ts",
         "./www/js/app.module.ts",
         "./www/js/app.routes.ts",
+        "./www/js/components/toy-input.component.ts",
         "./www/js/components/toy.component.spec.ts",
         "./www/js/components/toy.component.ts",
         "./www/js/containers/basket.container.ts",
@@ -40,13 +49,14 @@
         "./www/js/containers/header.container.ts",
         "./www/js/containers/main.container.ts",
         "./www/js/containers/toy.container.ts",
-        "./www/js/helpers/helpers.ts",
         "./www/js/main.ts",
         "./www/js/reducers/index.ts",
+        "./www/js/reducers/toy.reducer.spec.ts",
         "./www/js/reducers/toy.reducer.ts",
         "./www/js/reducers/translate.reducer.ts",
         "./www/js/reducers/user.reducer.ts",
         "./www/js/services/i18n.service.ts",
+        "./www/js/services/toy.service.spec.ts",
         "./www/js/services/toy.service.ts",
         "./index.ts"
     ]
