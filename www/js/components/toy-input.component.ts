@@ -18,7 +18,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 export class ToyInputComponent  implements ControlValueAccessor, OnChanges {
   @Input('ngModel') _value: string
   @Input('required') isRequired
-  @Input('attr.class') classe
 
   onChange: any = () => {}
   onTouched: any = () => {}
